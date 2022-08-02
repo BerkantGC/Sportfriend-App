@@ -1,0 +1,295 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  .main{
+    background-color: #171a21;
+  }
+  .sellers{
+    margin-top: 2rem;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 26%);
+  }
+  .seller-container{
+    text-align: center;
+  }
+  .game-rows-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .image-container{
+    background-color: #212630;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: all .2s ease-in-out;
+  }
+  .image-container:hover{
+    transform: scale(1.05);
+  }
+  .text{
+    color: white;
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+  
+  .image{
+    background-color: #282c34;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+  }
+  .login{
+    margin-right: 10rem;
+  }
+  .login-btn{
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: .42rem;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+  .login-btn:hover{
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+    border-width: 3px;
+  }
+  @keyframes example {
+    0%  {background-color: darkred;}
+    50%  {background-color: darkblue;}
+    75% {background-color: darkred;}
+    100%  {background-color: darkblue;}
+  }
+  @import url('https://fonts.googleapis.com/css?family=PT+Sans');
+  
+  body{
+      background: #282c34;
+      font-family: 'PT Sans', sans-serif;
+  }
+  h2{
+      padding-top: 1.5rem;
+  }
+  a{
+      color: #333;
+  }
+  a:hover{
+      color: #da5767;
+      text-decoration: none;
+  }
+  .card{
+      color: white;
+  }
+  .form-control{
+      background-color: #f8f9fa;
+      padding: 15px 15px;
+      margin-bottom: 1.3rem;
+      border-radius: 10px;
+      border-color: crimson;
+      width: 300px;
+  }
+  .create-acc{
+    color: #da5767;
+  }
+  .create-acc:hover{
+    color: #df8c96;
+    font-size: large;
+    transition: .1s;
+    text-emphasis-style: inherit;
+  }
+  .form-control:focus {
+  
+      color: black;
+      background-color: #ffffff;
+      border: 3px solid #da5767;
+      outline: 0;
+      box-shadow: none;
+  
+  }
+  
+  .btn{
+      padding: 0.6rem 1.5rem;
+      background: #da5767;
+      border: 2px solid #da5767;
+      margin-bottom: 50px;
+      border-radius: 10px;
+      width: 300px;
+  }
+  .btn-primary:hover {
+  
+  
+      background-color: lightcoral;
+      border-color: #df8c96;
+      transition: .3s;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
+  }
+  .keep-in-center{
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .loader {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 4px solid lightskyblue;
+    top: 50%;
+    animation: loader 4s infinite ease;
+  }
+  
+  .loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: lightskyblue;
+    animation: loader-inner 4s infinite ease-in;
+  }
+  
+  .loader-wrapper{
+    text-align: center;
+    margin-top: 20%;
+  }
+  .top-bar{
+    background-color: #212630;
+    width: 100%;
+    display: grid;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 5px;
+    height: 2.5rem;
+    display: grid;
+    grid-auto-flow: column;
+    color: white;
+  }
+  .top-bar-text{
+    color: white;
+    font-family: inherit;
+    font-size: small;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .top-bar-centering{
+    margin-right: 9rem;
+  }
+  .header-container{
+    margin-top: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    background-color: #212630;
+  }
+  .site-header{
+  }
+  .site-header-side{
+    margin-left: 10rem;  
+    display: flex;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: center;
+    height: 5rem;
+  }
+  .site-header-slogan{
+    font-size: var(--font-size-sm);
+    font-size: small;
+    font-weight: 100;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    white-space: nowrap;
+    color: white;
+  }
+  .username-title{
+    text-align: center;
+    color: white;
+    margin-right: 2rem;
+  }
+  .profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .site-header-side:left{
+    
+  }
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    
+    25% {
+      transform: rotate(180deg);
+    }
+    
+    50% {
+      transform: rotate(180deg);
+    }
+    
+    75% {
+      transform: rotate(360deg);
+    }
+    
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes loader-inner {
+    0% {
+      height: 0%;
+    }
+    
+    25% {
+      height: 0%;
+    }
+    
+    50% {
+      height: 100%;
+    }
+    
+    75% {
+      height: 100%;
+    }
+    
+    100% {
+      height: 0%;
+    }
+  }
+  

@@ -1,0 +1,58 @@
+.login-page{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.form-object{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.title{
+    color: aliceblue;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+.login-form input{
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    border-width: .2rem;
+    height: 2rem;
+    border-color: black;
+    text-align: center;
+    width: 25rem;
+}
+.login-form button{
+    border-color: black;
+    border-radius: 1rem;
+    align-self: center;
+    width: 70%;
+    height: 2rem;
+    color: white;
+    background-color: red;
+}
+.login-form button:hover{
+    background-color: royalblue;
+}
+.already-have{
+    margin-top: 1.2rem;
+    align-self: center;
+    color: white;
+}
+.already-have:hover{
+    color: red;
+}

@@ -1,0 +1,59 @@
+.seller-row-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.2rem;
+    margin-left: 8%;
+    margin-right: 8%;
+}
+.seller-row-sellers{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2.5em, 1fr));    
+    gap: 1rem;
+    
+}
+.each-seller{
+    margin-top: -1rem;
+    height: 2rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: #212630;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    transition: all .2s ease-in-out;
+}
+.each-seller:hover{
+    transform: scaleY(1.1);
+}
+.all-games{
+    margin-top: 50px;
+    display: grid;
+    grid-auto-flow: column;
+    gap: .1rem;
+    align-items: center;
+    margin-left: 8%;
+    margin-right: 8%;
+    padding: 10px;
+    justify-content: center;
+}
+.all-games-container{
+    background-color: #212630;
+    padding: 20px;
+}
+.all-games-container1{
+    background-color: #212630;
+    padding: 20px;
+    border-radius: 1rem 0 0 1rem;
+}
+.all-games-container2{
+    background-color: #212630;
+    padding: 20px;
+    border-radius: 0 1rem 1rem 0;
+}
+.all-games-container:hover{
+    color: black;
+}
+.all-games-image:hover{
+    color: black;
+}
