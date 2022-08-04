@@ -237,6 +237,13 @@
     color: white;
   }
   .username-title{
+    background-color: #333846;
+    height: 3rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
     text-align: center;
     color: white;
     margin-right: 2rem;

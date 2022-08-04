@@ -1,0 +1,78 @@
+.detail-container{
+    margin: 5rem 15rem 0 15rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.8fr;
+    overflow: hidden;
+    gap: 1rem;
+    
+}
+
+.detail-info{
+    color: white;
+    background-color: #171a21;
+    display: grid;
+    grid-template-rows: 7fr 2fr;
+}
+.detail-title{
+    text-align: center;
+    font-size: 2rem;
+}
+.detail-views{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.view-container{
+    background-color: #212630;
+    padding: 0 10px 0 10px;
+    border-radius: 5px;
+}
+.detail-cost{
+    background-color: #171a21;
+    color: white;
+    display: grid;
+    text-align: center;
+    grid-template-rows: 1fr 0.2fr;
+}
+.detail-cost2{
+    width: 100%;
+    color: white;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1.5fr 1.5fr;
+}
+.detail-description{
+    font-size: medium;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.detail-image-container{
+    border: 1px solid;
+    background-color: aliceblue;
+}
+.detail-image{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.pursch-btn{
+    background-color: green;
+    border-radius: 7px;
+    border-color: green;
+    color: white;
+    height: 3rem;
+    width: 6rem;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.pursch-btn:hover{
+    background-color: #171a21;
+    color: green;
+}
+.detail-stock{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}

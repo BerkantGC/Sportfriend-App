@@ -1,174 +1,85 @@
-import '../styles/App.css';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux/es/exports';
-import axios from 'axios';
-import '../styles/SellerRow.css';
+import {useParams} from "react-router-dom"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "../styles/Detail.css";
+import {HiCheck, HiX} from "react-icons/hi";
 
-const GameRows = (props) => {
-  return ( 
-    <div className ="game-rows-container">
-      <a className='image-container'>
-        <img className='image' src={props.imageUrl} alt={props.gameName}></img>
-        <p className='text'>{props.gameName}</p>
-      </a>
-    </div>
-)
-}
+import Tab from "../components/Tab";
 
-const handleLogout = () =>{
-  axios.post("http://localhost:8080/logout");
-}
+const baseUrl = "http://localhost:8080/"
 
-const Tab = () => {
-  const token = useSelector(sel => sel.userToken)
-  const username = useSelector(sel => sel.username)
-  return (
-  <div>
-  <div className='top-bar'>
-    <div className="top-bar-centering">
-  <a className='top-bar-text' href='https://www.gamesatis.com/magaza-paketleri'>Mağaza Paketleri</a>
-  |
-  <a className='top-bar-text' href='https://www.gamesatis.com/donate'>Donate</a>
-  |
-  <a className='top-bar-text' href='https://www.gamesatis.com/blog'>Blog</a>
-  |
-  <a className='top-bar-text' href='https://www.gamesatis.com/yorumlar'>Yorumlar</a>
-  |
-  <a className='top-bar-text' href='https://www.gamesatis.com/magaza-paketleri'>Yardım ve Destek</a>
-  </div>
-</div>
-<section className='site-header'>
-  <div className='header-container'>
-    <div className='site-header-side'>
-      <a href='/details'>
-        <img alt='logo' src='https://images.gamesatis.com/assets/logo-light.svg' width="180" height="30"/>
-      </a>
-      <h1 class="site-header-slogan">Türkiye'nin En Büyük Oyuncu Pazarı</h1>
-    </div>
-    {token != null ? 
-    <div className='profile'>
-        <label className='username-title'>{username}<br></br>0,00 ₺</label>
-        <form className='login' onClick={handleLogout}>
-          <input className='login-btn' type='submit' value = "Logout"/>
-        </form>
-      </div>
-    :
-    <form className='login' action='http://localhost:3000/login'>
-        <input className='login-btn' type='submit' value = "Login/Register"/>
-      </form>
-      }
-  </div>
-</section>
-</div>
-)
-}
+export default function Details(){
+    const {id} = useParams();
 
-const SellerRow = (props) =>{
-  return(
-    <div>
-    <div className="seller-row-container">
-        <section >
-          <ol className="seller-row-sellers">
-          {props.data.map(it => {return <a className="each-seller">{it.sellerName}</a>})} 
-          </ol>
-        </section>
-    </div>
-    <div className="all-games">
-      <a className="all-games-container1" href ="https://www.gamesatis.com/tum-oyunlar/pubg-mobile">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/5/pubg.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/valorant">
-        <img className="all-games-image"  src="https://img.gamesatis.com/showcase/310/valorant.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/league-of-legends">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/311/league-of-legends.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/knight-online">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/929/knight-online.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/cs-go">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/4/cs-go.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/mobile-legends">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/723/mobile-legends.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/black-desert-online">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/725/black-desert-online.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/8/metin2.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/743/point-blank.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/731/wolfteam.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/850/fifa-22.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/893/dota-2.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/3/google.svg" width="70" height="45"/>
-      </a> 
-      <a className="all-games-container2" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-        <img className="all-games-image" src="https://img.gamesatis.com/showcase/726/rust.svg" width="70" height="45"/>
-      </a> 
-  </div>
-    </div>
-  );
-}
-function App() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+    const [data, setData] = useState(null);
 
-  const token = useSelector(sel => sel.userToken);
-  console.log(token);
+    const getDetail = async() => {
+        await axios.get(baseUrl + "game-details/" + id).then(res=>
+            {
+                setData(res.data)
+                console.log(res.data);
+            })
+            .catch(err => console.error(err))
+    }
 
-  const handleGetData = async() => 
-  { 
-    setLoading(true);
-    await axios.get("http://localhost:8080/sellers",
-    {headers: {"Authorization" : `Bearer ${token}`}})
-    .then(res => {
-      setData(res.data);
-      console.log(res.data[0].games[0]);
-    })
-      setLoading(false);
-   }
-  useEffect(() => {
-    handleGetData();
-  }, [])
-
-
- if(data != null)
- return(
-    <div>
-      { loading ? 
-      <div className='loader-wrapper'>
-                <span class="loader"><span class="loader-inner"></span></span>
-        </div>
+    useEffect(()=> {
+        getDetail();
+    }, [])
+    
+    return(
+        data == null ? null 
         :
-        <div className="main">
-          <Tab/>
-          <SellerRow data={data}/>
-          <div className='sellers'>
-            {data.map(item=>{
-              return <div className='seller-container'>
-              {item.games.map(it=>
-                {
-                  return <GameRows gameName={it.gameName} imageUrl={it.imageUrl}></GameRows>
-                })}
-              </div>
-            })}
-          </div>
-          <div><br></br></div>
-    </div>
-   }
-   </div>
-);
+        <div>
+            <Tab/>
+            <section className="detail-container" id="detail-container">
+                <div className="detail-image-container" id="detail-image-container">
+                    <img className="detail-image" id="detail-image" src={Object.values(data.game)[4]} ></img>
+                </div>
+                <div className="detail-info" id="detail-info">
+                    <div>
+                        <h1 className="detail-title">{data.gameName}</h1>
+                        <p className="detail-description"><b>Description:</b></p>
+                        <p className="detail-description">{data.description}</p>
+                    </div>
+                    <div className="detail-views">
+                        <div className="view-container">
+                            <p>
+                        Product Id: &nbsp;<b>#{data.id}</b>
+                        </p>
+                        </div>
+                        <div className="view-container">
+                            <p>
+                        Views: &nbsp;<b>{data.views}</b>
+                        </p>
+                        </div>
+                        <div className="view-container">
+                            <p>
+                        Year: &nbsp;<b>{data.year}</b>
+                        </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="detail-cost">
+                    <div>Store Info</div>
+                    <div className="detail-cost2">
+                            <p className="detail-stock">
+                            <b>Stock:&nbsp;&nbsp;</b>
+                                {
+                                data.stock == true ?  <HiCheck size={25}/> :  <HiX/>
+                                }
+                            </p>
+                        <div >
+                            <h1>{data.cost}₺</h1>
+                        </div>
+                        <div>Safe</div>
+                        <div>
+                            <button className="pursch-btn">
+                                Buy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    )
 }
-
-export default App;

@@ -23,15 +23,15 @@ const Login = () => {
         
         await axios.post(baseUrl + "login", user)
             .then((response)=>{
-                dispatch({type: "USER_ADD", payload: {token: response.data, username: username}})
-                navigation(`/details`);
+                dispatch({type: "USER_ADD", payload: {token: response.data.token, username: username}})
+                console.log(response.data.username);
+                navigation("/main");
             })
             .catch((response) => {
                 alert("There is no such that(" + username + ") user")
                 dispatch({type: "USER_ADD", payload: null})
             })
     
-        console.log(token);
     }
 
     
