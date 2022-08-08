@@ -31,23 +31,14 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
-  const token = useSelector(sel => sel.userToken);
-  console.log(token);
+  const token = localStorage.getItem("@token");
+  console.log("token by local storage is :" + token);
 
   const handleGetData = async() => 
   { 
     setLoading(true);
-    if(token != null)
-    {
-      await axios.get("http://localhost:8080/sellers",
-      {headers: {"Authorization" : `Bearer ${token}`}})
-      .then(res => {
-      setData(res.data);
-      console.log(res.data[0].games[0]);
-      })
-    }
-    else await axios.get("http://localhost:8080/sellers")
+    
+    await axios.get("http://localhost:8080/sellers")
     .then(res => {
       setData(res.data);
       console.log(res.data[0].games[0]);

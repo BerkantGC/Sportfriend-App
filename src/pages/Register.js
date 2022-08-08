@@ -36,7 +36,7 @@ const Register = () => {
         console.log('password 👉️', password);
         console.log('email 👉️', email);
 
-        if(password != checkPassword)
+        if(password !== checkPassword)
         return null;
 
         handleRegister(email, username, password);

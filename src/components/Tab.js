@@ -1,16 +1,19 @@
 import { useSelector } from "react-redux";
 import axios from "axios";
+import {FcBusinessman} from "react-icons/fc";
 
-const handleLogout = () =>{
-  axios.post("http://localhost:8080/logout");
+const handleLogout = async() =>{
+  localStorage.removeItem("@token")
+   localStorage.removeItem("@username")
+  await axios.post("http://localhost:8080/logout");
 }
 
 const handleGetProfileInfo = () => {
 
 }
 const Tab = ({navigate}) => {
-    const token = useSelector(sel => sel.userToken)
-    const username = useSelector(sel => sel.username)
+    const token = localStorage.getItem("@token");
+    const username = localStorage.getItem("@username")
     const userProfileUrl = "/profile/" + username;
     return (
     <div>
@@ -35,9 +38,11 @@ const Tab = ({navigate}) => {
         </a>
         <h1 class="site-header-slogan">Türkiye'nin En Büyük Oyuncu Pazarı</h1>
       </div>
-      {token != null ? 
+      
+      {(token != null && username != null)? 
       <div className='profile'>
           <button onClick={() => navigate(userProfileUrl)} className='username-title'>
+          <FcBusinessman size={30}></FcBusinessman>
             <label>{username}<br></br>0,00 ₺</label>
           </button>
           <form className='login' onClick={handleLogout}>

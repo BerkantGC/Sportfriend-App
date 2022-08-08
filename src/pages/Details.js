@@ -1,18 +1,64 @@
-import {useParams} from "react-router-dom"
+import {useNavigate, useParams} from "react-router-dom"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../styles/Detail.css";
 import {HiCheck, HiX} from "react-icons/hi";
+import {AiFillStar, AiOutlineStar} from "react-icons/ai";
 
 import Tab from "../components/Tab";
 
 const baseUrl = "http://localhost:8080/"
+
+const AddFavorite = (props) => {
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    const token = localStorage.getItem("@token");
+    const username =localStorage.getItem("@username");
+    const game = {
+        "username": username,
+        "favorites": {
+            "favoriteGames": [
+                {
+                    "gameName": props.gameName 
+                }
+            ]
+        }
+    };
+    console.log(token)
+    console.log(game);
+
+    function add(){
+        if(token != null)
+        {
+            axios.put(baseUrl + "add_favorite/", game, {headers: {"Authorization" : `Bearer ${token}`}})
+            .then(res =>{ 
+                alert("added to your favorites");
+                setIsFavorite(true);
+            })
+            .catch(err => alert(err));
+        }
+        else{
+            props.navigate("/login");
+        }
+    }
+    return(
+    <div>
+        <h1>Store Info</h1>
+        {
+            isFavorite ? <AiFillStar onClick={add} size={80}/> : <AiOutlineStar onClick={add} size={80}/>
+        }
+        <div>
+            Add Favorite
+        </div>
+    </div>);
+}
 
 export default function Details(){
     const {id} = useParams();
 
     const [data, setData] = useState(null);
 
+    const navigate = useNavigate();
     const getDetail = async() => {
         await axios.get(baseUrl + "game-details/" + id).then(res=>
             {
@@ -30,7 +76,7 @@ export default function Details(){
         data == null ? null 
         :
         <div>
-            <Tab/>
+            <Tab navigate={navigate}/>
             <section className="detail-container" id="detail-container">
                 <div className="detail-image-container" id="detail-image-container">
                     <img className="detail-image" id="detail-image" src={Object.values(data.game)[4]} ></img>
@@ -60,7 +106,7 @@ export default function Details(){
                     </div>
                 </div>
                 <div className="detail-cost">
-                    <div>Store Info</div>
+                    <AddFavorite gameName = {data.gameName} navigate = {navigate}/>
                     <div className="detail-cost2">
                             <p className="detail-stock">
                             <b>Stock:&nbsp;&nbsp;</b>

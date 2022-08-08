@@ -10,7 +10,9 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const token = useSelector(sel => sel.userToken);
+    const [error, setError] = useState(null);
+
+    const token = localStorage.getItem("@token");
     const dispatch = useDispatch();
 
     const navigation = useNavigate();
@@ -23,17 +25,19 @@ const Login = () => {
         
         await axios.post(baseUrl + "login", user)
             .then((response)=>{
-                dispatch({type: "USER_ADD", payload: {token: response.data.token, username: username}})
+                dispatch({type: "USER_ADD", payload: {token: response.data.token, username: username}});
+                localStorage.setItem("@token", response.data.token);
+                localStorage.setItem("@username",username);
                 console.log(response.data.username);
-                navigation("/main");
+                 navigation("/main");
+
             })
             .catch((response) => {
-                alert("There is no such that(" + username + ") user")
+                setError(response)
                 dispatch({type: "USER_ADD", payload: null})
             })
     
     }
-
     
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -54,6 +58,7 @@ const Login = () => {
                     <button type="submit">LOGIN</button>
                 </form>
                 <a className="already-have" href="/register">Create account</a>
+                {error != null && <p className="login-error-message">{username} couldnt found</p>} 
             </div>
         </div>        
     )

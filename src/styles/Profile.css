@@ -15,9 +15,50 @@
     grid-template-columns: 1fr 1fr;
     align-items: flex-start;
     margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+.profile-edit{
+    background-color: black;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1rem;
+    justify-items: center;
+    margin-left: 1rem;
+}
+.profile-edit>button{
+    display: grid;
+    grid-template-rows: .7fr .7fr;
+    width: 80%;
+    justify-items: center;
+    background-color: #212630;
+    border: 0;
+    color: white;
+    border-radius: 10px;
+    align-items: flex-end;
+}
+.profile-edit>button:active{
+    color: #171a21;
+    background-color: white;
+    text-decoration-color: #171a21;
+}
+.profile-edit>button:hover{
+    color: #171a21;
+    background-color: white;
+    text-decoration-color: #171a21;
+    cursor:pointer;
+
 }
 .icon-base{
     background-color: #212630;
+    border: 0;
+}
+.user-panel-menu-bottom{
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
 }
 .profile-logout{
     font-size: 15px;
@@ -28,6 +69,8 @@
     width: 68%;
     color: red;
     border-color: red;
+    cursor:pointer;
+
 }
 .profile-logout:hover{
     background-color: red;
@@ -37,7 +80,7 @@
     background-color: #212630;
     margin-right: 1rem;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr ;
     row-gap: 1rem;
     padding: 15px;
 }
@@ -50,4 +93,34 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
+}
+.favorite-games-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+}
+.favorite-game-base{
+    --width: 100%;
+	--time: 0.7s;
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: #171a21;
+    align-items: center;
+    border-bottom-right-radius: 2rem;
+    border-top-right-radius: 2rem;
+    padding-bottom: 6px;
+	box-shadow: inset 0 0 0 4px #000, inset -4px -4px 0 6px #CCC;
+	transition: width var(--time), padding-top var(--time);
+}
+
+.favorite-game-base:hover {
+    cursor: pointer;
+    --angle: 5deg;
+    transform: translateX(-2%);
+}
+.favorite-game-base>div> img{
+    width: 65%;
+    height: 100%;
+    object-fit: contain;
 }

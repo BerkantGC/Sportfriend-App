@@ -1,21 +1,8 @@
 .App {
     text-align: center;
   }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-  
   .App-header {
     background-color: #282c34;
-    min-height: 100vh;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -68,6 +55,8 @@
     background-color: #282c34;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
+    width: 324px;
+    height: 180px;
   }
   .login{
     margin-right: 10rem;
@@ -92,6 +81,11 @@
     100%  {background-color: darkblue;}
   }
   @import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+  .login-error-message{
+    color: red;
+    text-align: center;
+  }
   
   body{
       background: #282c34;
