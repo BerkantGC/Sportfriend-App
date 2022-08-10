@@ -2,17 +2,17 @@
     display: flex;
     flex-direction: column;
     margin-top: 0.2rem;
-    margin-left: 8%;
-    margin-right: 8%;
 }
 .seller-row-sellers{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(2.5em, 1fr));    
+    grid-row: 1fr;
+    grid-auto-flow: column;
+    justify-content: center;
     gap: 1rem;
-    
 }
 .each-seller{
     margin-top: -1rem;
+    width: 15rem;
     height: 2rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;

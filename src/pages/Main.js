@@ -9,14 +9,17 @@ import "../styles/App.css"
 import Tab from "../components/Tab.js";
 import SellerRow from "../components/SellerRow";
 
-const GameRows = ({item}) => {
-const link = "/details/" + item.id;
-console.log("link");
+const baseUrl = "http://localhost:8080/";
+
+const GameRows = (props) => {
+const link = "/details/" + props.item.id;
+let imageLink = baseUrl + "images/" + props.item.imageUrl.name;
+
   return ( 
     <div className ="game-rows-container">
-      <a href={link} className='image-container'>
-        <img className='image' src={item.imageUrl} alt={item.gameName}></img>
-        <p className='text'>{item.gameName}</p>
+      <a onClick={()=>props.navigate(link, imageLink)} className='image-container'>
+        <img className='image' loading="lazy"  src={imageLink} alt={props.item.gameName}></img>
+        <p className='text'>{props.item.gameName}</p>
       </a>
     </div>
 )
@@ -41,7 +44,6 @@ function App() {
     await axios.get("http://localhost:8080/sellers")
     .then(res => {
       setData(res.data);
-      console.log(res.data[0].games[0]);
       })
       setLoading(false);
    }
@@ -49,7 +51,9 @@ function App() {
     handleGetData();
   }, [])
 
-
+  let games = [];
+  
+ (data.map(it => it.games.map(item=>games.push(item))))
  if(data != null)
  return(
     <div>
@@ -62,14 +66,12 @@ function App() {
           <Tab navigate={navigate}/>
           <SellerRow data={data}/>
           <div className='sellers'>
-            {data.map(item=>{
-              return <div className='seller-container'>
-              {item.games.map(it=>
+           <div className='seller-container'>
+              {games.map(it=>
                 {
-                  return <GameRows item={it}></GameRows>
+                  return <GameRows item={it} navigate={navigate}></GameRows>
                 })}
               </div>
-            })}
           </div>
           <div><br></br></div>
     </div>

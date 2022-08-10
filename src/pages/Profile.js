@@ -8,6 +8,7 @@ import "../styles/Profile.css";
 
 import Tab from "../components/Tab";
 import FavoriteGames from "../components/FavoriteGames";
+import AddGame from "../components/AddGame";
 
 
 const baseUrl = "http://localhost:8080";
@@ -56,13 +57,14 @@ function Profile(){
                     <FcBusinessman size={200}></FcBusinessman>
                     </button>
                     <div>
-                    <h1>{id.toLocaleUpperCase()}<br></br>0.00<BiLira/></h1>
+                    <h1>{id.toLocaleUpperCase()}<br></br>0.00<BiLira size={25} className="BiLira"/></h1>
                     <form  onClick={handleLogout}>
                         <input className='profile-logout' type='submit' value = "Logout"/>
                     </form>
                     </div>
                 </div>
                 <div className="profile-edit">
+                    <div className="profile-buttons">
                     <button onClick={()=>{setSelected("favorites")}}>
                         <BiStar size={50}/>
                         <label>Favorites</label>
@@ -75,9 +77,12 @@ function Profile(){
                         <BiCommentDetail size={50}/>
                         <label>Comments</label>
                     </button>
+                    </div>
+                    <div className="profile-banner">
                     <a href="/pubg-mobile-uc" target="_blank">
-                        <img class="user-panel-menu-bottom"  src="https://img.gamesatis.com/slider/908/pubg-uc-satin-al-34550.jpg" alt="pubg-uc-satin-al"/>
+                        <img class="user-panel-menu-bottom"  src="https://img.gamesatis.com/showcase/735/lol-hesap-64628.jpg" alt="lol"/>
                     </a>
+                    </div>
                 </div>
             </div>
             <div className="profile-info">
@@ -100,7 +105,7 @@ function Profile(){
                 selected == "favorites" && <FavoriteGames/>
             }
             {
-                selected == "addgame" && <div><p>Add Game</p></div>
+                selected == "addgame" && <AddGame/>
             }
             {
                 selected == "comments" && <div><p>Comments</p></div>

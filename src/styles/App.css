@@ -21,13 +21,12 @@
   }
   .sellers{
     margin-top: 2rem;
-    margin-left: 10%;
-    margin-right: 10%;
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(4, 26%);
+    margin-left: 7%;
+    margin-right: 7%;
   }
   .seller-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     text-align: center;
   }
   .game-rows-container{
@@ -39,6 +38,7 @@
   .image-container{
     background-color: #212630;
     border-radius: 1rem;
+    cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     transition: all .2s ease-in-out;
   }

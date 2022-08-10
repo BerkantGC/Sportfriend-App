@@ -4,45 +4,58 @@
     color: white;
     display: grid;
     justify-content: center;
-    grid-template-columns: 1.5fr 3fr;
+    grid-template-columns: 1fr 2fr;
     padding: 15px;
     gap: 5rem;
 }
 .profile-picture{
     background-color: #212630;
-    border-radius: 1rem;
+    border-radius: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: flex-start;
-    margin-left: 1rem;
     margin-bottom: 1rem;
+}
+.profile-picture>div>h1>BiLira{
+    margin-top: 1rem;
 }
 .profile-edit{
     background-color: black;
     border-radius: 1rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     row-gap: 1rem;
-    justify-items: center;
-    margin-left: 1rem;
 }
-.profile-edit>button{
+.profile-edit>div>button{
     display: grid;
-    grid-template-rows: .7fr .7fr;
-    width: 80%;
+    grid-template-rows: 1fr .5fr; 
+    width: 90%;
     justify-items: center;
     background-color: #212630;
     border: 0;
     color: white;
+    padding-top: 7px;
     border-radius: 10px;
-    align-items: flex-end;
+    align-items: center;
 }
-.profile-edit>button:active{
+.profile-banner{
+    text-align: center;
+}
+.profile-banner>a{
+}
+
+.profile-buttons{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    justify-content: space-between;
+}
+.profile-edit>div>button:active{
     color: #171a21;
     background-color: white;
     text-decoration-color: #171a21;
 }
-.profile-edit>button:hover{
+.profile-edit>div>button:hover{
     color: #171a21;
     background-color: white;
     text-decoration-color: #171a21;
@@ -55,9 +68,7 @@
 }
 .user-panel-menu-bottom{
     border-radius: 10px;
-    margin-left: 20px;
-    width: 80%;
-    height: 100%;
+    width: 100%;
     object-fit: cover;
 }
 .profile-logout{

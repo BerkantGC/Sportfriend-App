@@ -23,8 +23,9 @@ const FavoriteGames = () => {
         return(
         <div className="favorite-games-container">
             {favorites.favoriteGames.map(it => {
-                return <div onClick={()=> navigate("/details/" + it.id)} className="favorite-game-base">
-                    <div><img alt={it.gameName} src={it.imageUrl}/></div>
+                const imageLink = baseUrl + "images/" + it.imageUrl.name;
+                return <div onClick={()=> navigate("/details/" + it.id)}  className="favorite-game-base">
+                    <div><img alt={it.gameName} loading="lazy"  src={imageLink}/></div>
                     <div><p>{it.gameName}</p></div> 
                     <div><AiFillStar size={60}/></div>
                     </div>

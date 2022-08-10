@@ -52,6 +52,10 @@ const AddFavorite = (props) => {
         </div>
     </div>);
 }
+const Image = ({url}) => {
+    const imageUrl = baseUrl+ "images/"+ url.imageUrl;
+    return <img className="detail-image" id="detail-image" width="1920px" height="1080px" loading="lazy" src={imageUrl}></img>
+}
 
 export default function Details(){
     const {id} = useParams();
@@ -59,6 +63,7 @@ export default function Details(){
     const [data, setData] = useState(null);
 
     const navigate = useNavigate();
+    //Burada kaldım!
     const getDetail = async() => {
         await axios.get(baseUrl + "game-details/" + id).then(res=>
             {
@@ -71,7 +76,6 @@ export default function Details(){
     useEffect(()=> {
         getDetail();
     }, [])
-    
     return(
         data == null ? null 
         :
@@ -79,7 +83,7 @@ export default function Details(){
             <Tab navigate={navigate}/>
             <section className="detail-container" id="detail-container">
                 <div className="detail-image-container" id="detail-image-container">
-                    <img className="detail-image" id="detail-image" src={Object.values(data.game)[4]} ></img>
+                    <Image url={data}></Image>
                 </div>
                 <div className="detail-info" id="detail-info">
                     <div>

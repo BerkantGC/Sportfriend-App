@@ -1,0 +1,64 @@
+.addgame-container{
+    display: grid;
+    align-items: center;
+    row-gap: 10px;
+}
+.info-input{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.addgame-name{
+    display: flex;
+    background-color: white;
+    color: #111318;
+    height: 20px;
+    width: 95%;
+    border: 0;
+    padding: 10px;
+}
+.addgame-upload{
+    margin-top: 15px;
+    display: grid;
+    justify-items: center;
+    row-gap: 10px;
+    
+}
+.addgame-upload>img{
+    background-color: #111318;
+    object-fit: contain;
+}
+.addgame-upload>div{
+    background-color: #111318 ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 525px;
+    height: 420px;
+}
+
+#upload-button{
+    margin: 10px;
+    width: 20%;
+    background-color: #212630;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    color: white;
+    border-color: white;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 3px;
+}
+.select-year{
+    color: #111318;
+    background-color: #111318;
+    width: 97.5%;
+}
+#fileupload{
+    position: absolute;
+    width: 525px;
+    height: 420px;
+    opacity: 0;
+}
