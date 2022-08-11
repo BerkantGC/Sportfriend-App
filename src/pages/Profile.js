@@ -4,7 +4,11 @@ import {Navigate, useNavigate, useParams} from "react-router-dom";
 import { useSelector } from "react-redux";
 import {FcBusinessman} from "react-icons/fc";
 import {BiLira, BiCommentDetail, BiGame, BiStar} from "react-icons/bi";
+import {FaRegEdit} from "react-icons/fa";
+import {CgClose} from "react-icons/cg";
 import "../styles/Profile.css";
+
+import styles from "../styles/ChangePasswordStyle.scss";
 
 import Tab from "../components/Tab";
 import FavoriteGames from "../components/FavoriteGames";
@@ -12,6 +16,19 @@ import AddGame from "../components/AddGame";
 
 
 const baseUrl = "http://localhost:8080";
+
+const handleChangePassword= async(oldPassw, newPassw, checkPassw)=> {
+    
+    const token = localStorage.getItem("@token")
+    if(newPassw == checkPassw)
+    {
+        const changePassword = {
+            "oldPassword": oldPassw,
+            "newPassword": newPassw
+        }
+        await axios.put(baseUrl + "change_password", changePassword, {headers: {"Authorization" : `Bearer ${token}`}})
+    }
+}
 
 const toPassword = (password) => {
     let newPassword = [];
@@ -35,10 +52,46 @@ function Profile(){
     const navigate = useNavigate();
     const token = localStorage.getItem("@token")
 
+    const [isPasswordModalActive, setPasswordModalActive] = useState(false);
+
+    const EditPassword = () => {
+        const [oldPassw, setOldPass] = useState("");
+        const [newPassw, setPassw] = useState("");
+        const [checkPassw, setCheckPassw] = useState("");
+
+        const handleSubmit = (event) => {
+            event.prevent.default();
+    
+            handleChangePassword(oldPassw, newPassw, checkPassw);
+        }
+        
+        return(
+            <form className={`${"profile-edit-password"} ${isPasswordModalActive ? "active" : ""}`}>
+                <CgClose onClick={()=> setPasswordModalActive(!isPasswordModalActive)} size={40} style={{position:"absolute", top: "15px", right: "15px", cursor: "pointer"}}></CgClose>
+                <div>
+                    Old Password:
+                    <input value={oldPassw} onChange={event => setOldPass(event.target.value)} placeholder="" />
+                </div>
+                <div>
+                    New Password:
+                    <input value={newPassw} onChange={event => setPassw(event.target.value)} placeholder="" />
+                </div>
+                <div>
+                    New Password Again:
+                    <input value={checkPassw} onChange={event => setCheckPassw(event.target.value)} placeholder="" />
+                </div>
+                <button onSubmit={handleSubmit}>Change Password</button>
+            </form>
+        )
+    }
+
     const [selected, setSelected] = useState("infos");
     const handleGetProfileInfo = async(id) => {
         await axios.get(baseUrl + "/users/" + id, {headers: {"Authorization" : `Bearer ${token}`}})
-        .then(res => setProfileData(res.data))
+        .then(res => {
+            setProfileData(res.data)
+            console.log(res.data)
+        })
         .catch(err => navigate("/main"))
     }
 
@@ -93,6 +146,10 @@ function Profile(){
                         </div>
                         <div className="profile-placeholder">
                         Password: <p>{toPassword(profileData.password)}</p>
+                            <div onClick={()=>setPasswordModalActive(!isPasswordModalActive)} className="edit-button">
+                                <FaRegEdit size={35}/>
+                            </div>
+                            <EditPassword/>
                         </div>
                         <div className="profile-placeholder">
                             Roles: {Object.values(profileData.roles).map(item=>{
@@ -102,7 +159,7 @@ function Profile(){
                         </>
             }
             {
-                selected == "favorites" && <FavoriteGames/>
+                selected == "favorites" && <FavoriteGames />
             }
             {
                 selected == "addgame" && <AddGame/>

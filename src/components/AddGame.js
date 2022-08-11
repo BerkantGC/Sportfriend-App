@@ -25,6 +25,8 @@ const AddGame =() => {
     const [imageName, setImageName] = useState("");
     const [dateValue, setDateValue] = useState("");
 
+    const [process, setProcess] = useState(1);
+
     const [file, setFile] = useState(null);
 
     const handleGetDate = (val)=> {
@@ -34,11 +36,11 @@ const AddGame =() => {
     async function uploadFile(event){
         event.preventDefault();
         const game = {
-            "sellerName": "BerkantGC",
+            "sellerName": "NahideG",
             "games": []
         }
         game.games.push({
-            "id": 13,
+            "id": 14,
             "gameName": gamename,
             "gameYear": dateValue,
             "gameDetails": {
@@ -75,9 +77,11 @@ const AddGame =() => {
         
     }
     console.log(dateValue);
+    console.log(process)
     return(
         <form className="addgame-container" onSubmit={uploadFile}>
             <div className="info-input">
+                <progress  value={process} max={5}>60%</progress>
                 Name: 
                 <input  className="addgame-name" onChange={val=> setGamename(val.target.value)} placeholder="" type="text"></input>
                 Description:
@@ -93,7 +97,7 @@ const AddGame =() => {
                     event.preventDefault();
                     setImageSelected(event.target.files[0]);
                     setFile(URL.createObjectURL(event.target.files[0]));
-                    setImageName(event.target.files[0].name);
+                    setProcess(process+1);
                 }}type="file" className="fileupload" />
                 {file != null ?
                 <img src={file} width= "525px" height="420px"/> 

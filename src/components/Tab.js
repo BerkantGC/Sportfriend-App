@@ -50,7 +50,7 @@ const Tab = ({navigate}) => {
           </form>
         </div>
       :
-      <form className='login' action='http://localhost:3000/login'>
+      <form className='login' action='http://192.168.1.79:3000/login'>
           <input className='login-btn' type='submit' value = "Login/Register"/>
         </form>
         }

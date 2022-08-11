@@ -79,7 +79,7 @@ export default function Details(){
     return(
         data == null ? null 
         :
-        <div>
+        <div className="detail-main-container">
             <Tab navigate={navigate}/>
             <section className="detail-container" id="detail-container">
                 <div className="detail-image-container" id="detail-image-container">
@@ -130,6 +130,12 @@ export default function Details(){
                     </div>
                 </div>
             </section>
+            <div className="youtube-video">
+                <h1>Game Trailer</h1> 
+                <iframe width="500" height="398" title={data.gameName}
+                src={data.youtubeTrailer}>
+                </iframe> 
+            </div>
         </div>
     )
 }

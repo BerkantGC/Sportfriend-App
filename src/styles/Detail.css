@@ -1,7 +1,7 @@
 .detail-container{
     margin: 5rem 15rem 0 15rem;
     display: grid;
-    grid-template-columns: 1fr 2fr 0.8fr;
+    grid-template-columns: 1fr 2fr .8fr;
     overflow: hidden;
     gap: 1rem;
     
@@ -51,7 +51,7 @@
 }
 .detail-image{
     object-fit: cover;
-    width: 450px;
+    width: 500px;
     height: 100%
 }
 .pursch-btn{
@@ -77,5 +77,14 @@
 }
 #favorite-star{
     
+}
+.youtube-video{
+    display: flex;
+    align-items: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    flex-direction: column;
+    color: white;
 }
 
