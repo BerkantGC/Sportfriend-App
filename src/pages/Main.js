@@ -13,7 +13,7 @@ const baseUrl = "http://localhost:8080/";
 
 const GameRows = (props) => {
 const link = "/details/" + props.item.id;
-let imageLink = baseUrl + "images/" + props.item.imageUrl.name;
+let imageLink = baseUrl + "images/" + props.item.imageUrl;
 
   return ( 
     <div className ="game-rows-container">
@@ -44,16 +44,14 @@ function App() {
     await axios.get("http://localhost:8080/sellers")
     .then(res => {
       setData(res.data);
-      })
       setLoading(false);
+      })
    }
   useEffect(() => {
     handleGetData();
   }, [])
 
-  let games = [];
   
- (data.map(it => it.games.map(item=>games.push(item))))
  if(data != null)
  return(
     <div>
@@ -67,10 +65,11 @@ function App() {
           <SellerRow data={data}/>
           <div className='sellers'>
            <div className='seller-container'>
-              {games.map(it=>
+              {data.map(it=>
+              it.games.map(item=>
                 {
-                  return <GameRows item={it} navigate={navigate}></GameRows>
-                })}
+                  return <GameRows item={item} navigate={navigate}></GameRows>
+                }))}
               </div>
           </div>
           <div><br></br></div>

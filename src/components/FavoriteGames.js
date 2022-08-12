@@ -6,24 +6,26 @@ import "../styles/Profile.css"
 const baseUrl = "http://192.168.1.79:8080/";
 
 //image api 4098ffd4b6a640e78d6adf831e6f9bc0
-const FavoriteGames = () => {
+const FavoriteGames =() => {
     const navigate = useNavigate();
     const username = localStorage.getItem("@username");
     const [favorites, setFavorites] = useState(null);
-
-    const getFavorites = async() => {
-        await axios.get(baseUrl + "users/" + username).then(res => {setFavorites(res.data.favorites)});
-    }
-
+   
     useEffect(()=> {
+        const getFavorites = async() => {
+            await axios.get(baseUrl + "users/" + username).then(res => {setFavorites(res.data.favorites)});
+        }
+    
         getFavorites();
     }, [])
+
     if(favorites != null)
     {
         return(
         <div className="favorite-games-container">
+
             {favorites.favoriteGames.map(it => {
-                const imageLink = baseUrl + "images/" + it.imageUrl.name;
+                const imageLink = baseUrl + "images/" + it.imageUrl;
                 return <div onClick={()=> navigate("/details/" + it.id)}  className="favorite-game-base">
                     <div><img alt={it.gameName} loading="lazy"  src={imageLink}/></div>
                     <div><p>{it.gameName}</p></div> 
@@ -32,6 +34,12 @@ const FavoriteGames = () => {
             })}
         </div>
     )}
+    else return(
+    <div className="no-favorites">
+            <label>You don't have any favorite games!</label>
+            <img src="http://localhost:8080/images/sad.png" width={200}/>
+    </div>
+    ) 
 }
 
 export default FavoriteGames;

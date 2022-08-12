@@ -1,20 +1,32 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/AddGame.css";
 import Select from 'react-select';
 import {RiImageAddFill} from "react-icons/ri";
-import {GrTopCorner} from "react-icons/gr"
+import {GrTopCorner} from "react-icons/gr";
+
+import { serialize } from 'object-to-formdata';
+
+//DONE!
+
 const options = [
-    {value: "1975", label: '1975'}, 
-    {value: "1990", label: '1990'},
-    {value: "2000", label: '2000'}, 
-    {value: "2005", label: '2005'}, 
-    {value: "2010", label: '2010'}, 
-    {value: "2015", label: '2015'}, 
-    {value: "2020", label: '2020'}, 
+    {value: "1975", label: '1975'}
 ]
 const saveGame = (event)=>{
     event.preventDefault();
+}
+
+function hasSeller(username, sellers){
+    const arr = sellers.split(',');
+    console.log(arr[6] + " " +username)
+
+    for(let i= 0; i < arr.length; i++){
+        if(arr[i] === username)
+        {        
+            return true;
+        }    
+    }
+    return false;
 }
 
 const AddGame =() => {
@@ -29,52 +41,62 @@ const AddGame =() => {
 
     const [file, setFile] = useState(null);
 
+    useEffect(()=> {
+        for(let i = 1976; i<= 2022; i++){
+            options.push({value: i, label: i})
+         }
+    }, [])
     const handleGetDate = (val)=> {
         setDateValue(val);
     }
+    console.log(imageName)
+
+    const username = localStorage.getItem("@username");
+    const sellers = localStorage.getItem("@sellers");
 
     async function uploadFile(event){
+
         event.preventDefault();
         const game = {
-            "sellerName": "NahideG",
-            "games": []
-        }
-        game.games.push({
-            "id": 14,
-            "gameName": gamename,
-            "gameYear": dateValue,
-            "gameDetails": {
-                "stock": 1,
-                "views": 0,
-                "description": description,
-                "cost": cost
-            }
-        }
-        )
-
-        const getCircularReplacer = () => {
-            const seen = new WeakSet();
-            return (key, value) => {
-              if (typeof value === "object" && value !== null) {
-                if (seen.has(value)) {
-                  return;
+            "sellerName": username,
+            "games": [{
+                "gameName": gamename,
+                "gameYear": dateValue,
+                "imageUrl": imageName,
+                "gameDetails": {
+                    "stock": 1,
+                    "views": 0,
+                    "description": description,
+                    "cost": cost,
                 }
-                seen.add(value);
-              }
-              return value;
-            };
-          };
-          
-        console.log(game)
+            }]
+        }
+        const optionsFor = {
+            indices: true
+        }
         const formData = new FormData();
-        formData.append("file", imageSelected);
-        axios.post("http://localhost:8080/upload", formData).then(res => {
+        formData.append("file", imageSelected)
+        console.log(formData.getAll("file"))
+        console.log(game);
+
+        await axios.post("http://localhost:8080/upload", formData).then(res=>{
             console.log(res);
         })
-        axios.post("http://localhost:8080/sellers", game).then(res => {
-            console.log(res);
-        })
-        
+
+        if(hasSeller(username, sellers))
+        {
+            axios.put("http://localhost:8080/sellers", game)
+            .then(res => {
+                alert("Game successfully has been added!\nInfo: "+ res)
+            })
+            .catch(err=> alert("Game adding has failed please try again\nError: " + err))
+        }
+        else{
+            axios.post("http://localhost:8080/sellers", game).then(res => {
+                alert("Game successfully has been added!\nInfo: "+ res)
+            })
+            .catch(err=> alert("Game adding has failed please try again\nError: " + err))
+        }
     }
     console.log(dateValue);
     console.log(process)
@@ -96,6 +118,7 @@ const AddGame =() => {
                 <input id="fileupload" onChange={(event) => {
                     event.preventDefault();
                     setImageSelected(event.target.files[0]);
+                    setImageName(event.target.files[0].name);
                     setFile(URL.createObjectURL(event.target.files[0]));
                     setProcess(process+1);
                 }}type="file" className="fileupload" />

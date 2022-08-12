@@ -1,10 +1,18 @@
 const SellerRow = (props) =>{
+  let sellers = [];
+
+  props.data.map(it => {
+    sellers.push(it.sellerName);})
+
+    localStorage.setItem("@sellers", sellers);
     return(
       <div>
       <div className="seller-row-container">
           <section >
             <ol className="seller-row-sellers">
-            {props.data.map(it => {return <a className="each-seller">{it.sellerName}</a>})} 
+            {sellers.map(it => {
+              return <a className="each-seller">{it}
+              </a>})} 
             </ol>
           </section>
       </div>
