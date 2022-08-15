@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux/es/exports';
 import axios from 'axios';
-import{Link, useNavigate} from "react-router-dom"
+import{useNavigate} from "react-router-dom"
 import '../styles/SellerRow.css';
 import "../styles/App.css"
 
@@ -17,16 +16,12 @@ let imageLink = baseUrl + "images/" + props.item.imageUrl;
 
   return ( 
     <div className ="game-rows-container">
-      <a onClick={()=>props.navigate(link, imageLink)} className='image-container'>
+      <div onClick={()=>props.navigate(link, imageLink)} className='image-container'>
         <img className='image' loading="lazy"  src={imageLink} alt={props.item.gameName}></img>
         <p className='text'>{props.item.gameName}</p>
-      </a>
+      </div>
     </div>
 )
-}
-
-const handleLogout = () =>{
-  axios.post("http://localhost:8080/logout");
 }
 
 function App() {
@@ -34,8 +29,6 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const token = localStorage.getItem("@token");
-  console.log("token by local storage is :" + token);
 
   const handleGetData = async() => 
   { 
@@ -57,7 +50,7 @@ function App() {
     <div>
       { loading ? 
       <div className='loader-wrapper'>
-                <span class="loader"><span class="loader-inner"></span></span>
+                <span className="loader"><span className="loader-inner"></span></span>
         </div>
         :
         <div className="main">

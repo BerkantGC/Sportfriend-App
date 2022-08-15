@@ -36,7 +36,7 @@ const Tab = ({navigate}) => {
         <a href='/main'>
           <img alt='logo' src='https://images.gamesatis.com/assets/logo-light.svg' width="180" height="30"/>
         </a>
-        <h1 class="site-header-slogan">Türkiye'nin En Büyük Oyuncu Pazarı</h1>
+        <h1 className="site-header-slogan">Türkiye'nin En Büyük Oyuncu Pazarı</h1>
       </div>
       
       {(token != null && username != null)? 

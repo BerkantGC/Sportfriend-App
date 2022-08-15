@@ -3,18 +3,11 @@ import { useEffect, useState } from "react";
 import "../styles/AddGame.css";
 import Select from 'react-select';
 import {RiImageAddFill} from "react-icons/ri";
-import {GrTopCorner} from "react-icons/gr";
-
-import { serialize } from 'object-to-formdata';
-
 //DONE!
 
 const options = [
     {value: "1975", label: '1975'}
 ]
-const saveGame = (event)=>{
-    event.preventDefault();
-}
 
 function hasSeller(username, sellers){
     const arr = sellers.split(',');
@@ -36,7 +29,7 @@ const AddGame =() => {
     const [cost, setCost] = useState("");
     const [imageName, setImageName] = useState("");
     const [dateValue, setDateValue] = useState("");
-
+    const [youtubeUrl, setYoutubeUrl] = useState("");
     const [process, setProcess] = useState(1);
 
     const [file, setFile] = useState(null);
@@ -46,9 +39,7 @@ const AddGame =() => {
             options.push({value: i, label: i})
          }
     }, [])
-    const handleGetDate = (val)=> {
-        setDateValue(val);
-    }
+
     console.log(imageName)
 
     const username = localStorage.getItem("@username");
@@ -68,11 +59,9 @@ const AddGame =() => {
                     "views": 0,
                     "description": description,
                     "cost": cost,
+                    "youtubeTrailer": youtubeUrl
                 }
             }]
-        }
-        const optionsFor = {
-            indices: true
         }
         const formData = new FormData();
         formData.append("file", imageSelected)
@@ -87,7 +76,7 @@ const AddGame =() => {
         {
             axios.put("http://localhost:8080/sellers", game)
             .then(res => {
-                alert("Game successfully has been added!\nInfo: "+ res)
+                alert("Game successfully has been added!\nInfo: "+ res.data)
             })
             .catch(err=> alert("Game adding has failed please try again\nError: " + err))
         }
@@ -112,6 +101,8 @@ const AddGame =() => {
                 <input  className="addgame-name" onChange={val=> setCost(val.target.value)} placeholder="" type="number" min={0} ></input>
                 Year:
                 <Select placeholder="" onChange={(val)=>setDateValue(val.value)} className="select-year" options={options}/>
+                Youtube Script URL:
+                <input placeholder="" onChange={val=>setYoutubeUrl(val.target.value)} className="addgame-name" type="text"/>
             </div>
             
             <div className="addgame-upload">
@@ -123,7 +114,7 @@ const AddGame =() => {
                     setProcess(process+1);
                 }}type="file" className="fileupload" />
                 {file != null ?
-                <img src={file} width= "525px" height="420px"/> 
+                <img src={file} alt="display-img" width= "525px" height="420px"/> 
                 :
                 <div>
                     <RiImageAddFill size={100}/>

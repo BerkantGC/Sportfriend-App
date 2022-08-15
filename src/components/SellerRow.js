@@ -1,65 +1,68 @@
 const SellerRow = (props) =>{
   let sellers = [];
 
-  props.data.map(it => {
-    sellers.push(it.sellerName);})
+  props.data.map(it => sellers.push(it.sellerName));
 
     localStorage.setItem("@sellers", sellers);
     return(
       <div>
       <div className="seller-row-container">
           <section >
-            <ol className="seller-row-sellers">
+            <div href="https://gamesatis.com" className="seller-row-sellers">
             {sellers.map(it => {
-              return <a className="each-seller">{it}
-              </a>})} 
-            </ol>
+              return(
+                <div className="each-seller">
+                {it}
+                </div>
+                )
+            })} 
+            </div>
           </section>
       </div>
       <div className="all-games">
         <a className="all-games-container1" href ="https://www.gamesatis.com/tum-oyunlar/pubg-mobile">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/5/pubg.svg" width="70" height="45"/>
+          <img alt="pubg" className="all-games-image" src="https://img.gamesatis.com/showcase/5/pubg.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/valorant">
-          <img className="all-games-image"  src="https://img.gamesatis.com/showcase/310/valorant.svg" width="70" height="45"/>
+          <img alt="valo" className="all-games-image"  src="https://img.gamesatis.com/showcase/310/valorant.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/league-of-legends">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/311/league-of-legends.svg" width="70" height="45"/>
+          <img alt="lol" className="all-games-image" src="https://img.gamesatis.com/showcase/311/league-of-legends.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/knight-online">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/929/knight-online.svg" width="70" height="45"/>
+          <img alt="knightonline" className="all-games-image" src="https://img.gamesatis.com/showcase/929/knight-online.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/cs-go">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/4/cs-go.svg" width="70" height="45"/>
+          <img alt="csgo" className="all-games-image" src="https://img.gamesatis.com/showcase/4/cs-go.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/mobile-legends">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/723/mobile-legends.svg" width="70" height="45"/>
+          <img alt="mobilelegends" className="all-games-image" src="https://img.gamesatis.com/showcase/723/mobile-legends.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/black-desert-online">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/725/black-desert-online.svg" width="70" height="45"/>
+          <img alt="blackdesert" className="all-games-image" src="https://img.gamesatis.com/showcase/725/black-desert-online.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/8/metin2.svg" width="70" height="45"/>
+          <img alt="metin2" className="all-games-image" src="https://img.gamesatis.com/showcase/8/metin2.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/743/point-blank.svg" width="70" height="45"/>
+          <img alt="pointblank" className="all-games-image" src="https://img.gamesatis.com/showcase/743/point-blank.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/731/wolfteam.svg" width="70" height="45"/>
+          <img alt="wolfteam" className="all-games-image" src="https://img.gamesatis.com/showcase/731/wolfteam.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/850/fifa-22.svg" width="70" height="45"/>
+          <img alt="fifa22" className="all-games-image" src="https://img.gamesatis.com/showcase/850/fifa-22.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/893/dota-2.svg" width="70" height="45"/>
+          <img alt="dota2" className="all-games-image" src="https://img.gamesatis.com/showcase/893/dota-2.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/3/google.svg" width="70" height="45"/>
+          <img alt="google" className="all-games-image" src="https://img.gamesatis.com/showcase/3/google.svg" width="70" height="45"/>
         </a> 
         <a className="all-games-container2" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img className="all-games-image" src="https://img.gamesatis.com/showcase/726/rust.svg" width="70" height="45"/>
+          <img alt="rust" className="all-games-image" src="https://img.gamesatis.com/showcase/726/rust.svg" width="70" height="45"/>
         </a> 
-    </div>
+        </div>
       </div>
     );
   }

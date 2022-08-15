@@ -32,7 +32,7 @@ const AddFavorite = (props) => {
         {
             axios.put(baseUrl + "add_favorite/", game, {headers: {"Authorization" : `Bearer ${token}`}})
             .then(res =>{ 
-                alert("added to your favorites");
+                alert("Added to your favorites");
                 setIsFavorite(true);
             })
             .catch(err => alert(err));
@@ -132,7 +132,7 @@ export default function Details(){
             </section>
             <div className="youtube-video">
                 <h1>Game Trailer</h1> 
-                <iframe width="500" height="398" title={data.gameName}
+                <iframe width="75%" height={1430*9/16} title={data.gameName}
                 src={data.youtubeTrailer}>
                 </iframe> 
             </div>

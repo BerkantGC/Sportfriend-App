@@ -80,11 +80,9 @@
 }
 .youtube-video{
     display: flex;
-    align-items: flex-start;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
+    align-items: center;
     flex-direction: column;
+    justify-content: center;
     color: white;
 }
 
