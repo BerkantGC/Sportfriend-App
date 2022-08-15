@@ -94,18 +94,18 @@ export default function Details(){
                     <div className="detail-views">
                         <div className="view-container">
                             <p>
-                        Product Id: &nbsp;<b>#{data.id}</b>
-                        </p>
+                            Product Id: &nbsp;<b>#{data.id}</b>
+                            </p>
                         </div>
                         <div className="view-container">
                             <p>
-                        Views: &nbsp;<b>{data.views}</b>
-                        </p>
+                            Views: &nbsp;{data.views<500 ? <b>{data.views}</b> : <b>500+</b>}
+                            </p>
                         </div>
                         <div className="view-container">
                             <p>
-                        Year: &nbsp;<b>{data.year}</b>
-                        </p>
+                            Year: &nbsp;<b>{data.year}</b>
+                            </p>
                         </div>
                     </div>
                 </div>
