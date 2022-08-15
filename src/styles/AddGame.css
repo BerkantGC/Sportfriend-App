@@ -10,12 +10,17 @@
 }
 .addgame-name{
     display: flex;
-    background-color: white;
-    color: #111318;
+    background-color: #111318;
+    color: white;
     height: 20px;
     width: 95%;
     border: 0;
+    border-radius: 5px;
     padding: 10px;
+}
+.addgame-name:focus{
+    outline-color: rgb(194, 194, 241);
+    outline-style: solid;
 }
 .addgame-upload{
     margin-top: 15px;
@@ -52,8 +57,7 @@
     padding: 3px;
 }
 .select-year{
-    color: #111318;
-    background-color: #111318;
+    color: white;
     width: 97.5%;
 }
 #fileupload{

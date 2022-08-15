@@ -100,7 +100,15 @@ const AddGame =() => {
                 Cost: 
                 <input  className="addgame-name" onChange={val=> setCost(val.target.value)} placeholder="" type="number" min={0} ></input>
                 Year:
-                <Select placeholder="" onChange={(val)=>setDateValue(val.value)} className="select-year" options={options}/>
+                <Select placeholder="" className="select-year" onChange={(val)=>setDateValue(val.value)} theme={(theme) => ({
+                ...theme,
+                colors: {
+                    neutral20: "transparent",
+                    neutral0: "#111318",
+                    primary: 'rgb(194, 194, 241)',
+                    neutral80: 'white',
+                },
+                })}  options={options}/>
                 Youtube Script URL:
                 <input placeholder="" onChange={val=>setYoutubeUrl(val.target.value)} className="addgame-name" type="text"/>
             </div>
