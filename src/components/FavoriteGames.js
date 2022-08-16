@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {AiFillStar} from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "../styles/Profile.css"
@@ -10,14 +10,15 @@ const FavoriteGames =() => {
     const navigate = useNavigate();
     const username = localStorage.getItem("@username");
     const [favorites, setFavorites] = useState(null);
-   
-    useEffect(()=> {
+
+    useEffect(()=>{
         const getFavorites = async() => {
             await axios.get(baseUrl + "users/" + username).then(res => {setFavorites(res.data.favorites)});
         }
     
         getFavorites();
-    }, [])
+    
+    })
 
     if(favorites != null)
     {
@@ -38,8 +39,8 @@ const FavoriteGames =() => {
     <div className="no-favorites">
             <label>You don't have any favorite games!</label>
             <img src="http://localhost:8080/images/sad.png" width={200}/>
-    </div>
-    ) 
+    </div> 
+    )
 }
 
 export default FavoriteGames;
