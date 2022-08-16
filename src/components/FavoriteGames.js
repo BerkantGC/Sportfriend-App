@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import {AiFillStar} from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "../styles/Profile.css"
+import "../styles/ChangePasswordStyle.scss"
 const baseUrl = "http://192.168.1.79:8080/";
 
 //image api 4098ffd4b6a640e78d6adf831e6f9bc0
