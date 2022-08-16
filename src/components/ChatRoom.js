@@ -57,12 +57,14 @@ const ChatRoom = () => {
     console.log(userData.message.length)
     function onPublicMessageRecieved(payload){
         let payloadData = JSON.parse(payload.body);
+       
         switch(payloadData.messageStatus){
             case "MESSAGE":
                 publicChats.push(payloadData)
                 setPublicChats([...publicChats]);
                 break;
         }
+        
     }
     /*function onPrivateMessageRecieved(payload){
         let payloadData=JSON.parse(payload);
@@ -77,9 +79,11 @@ const ChatRoom = () => {
             setPrivateChats(new Map(privateChats));
         }
     }*/
+    const imageUrl = "http://localhost:8080/images/sad.png"
+    console.log(publicChats.length)
     return(
         <div >
-            <div className="chatroom">              
+            <div className="chatroom"> 
                 <div className="exist-messages">
                     {publicChats.map((chat,index)=> (
                         chat.senderName ===userData.username ?

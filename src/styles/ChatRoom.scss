@@ -4,6 +4,15 @@
     width: 830px;
     height: 340px;
     overflow-y: scroll;
+    .div{
+        display: flex;
+        width: 830px;
+        background-color: #278EFF;
+        height: 340px;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+    }
 }
 .send-message{
     display: block;
@@ -40,7 +49,7 @@
         max-width: 50%;
         max-height: 100%;
         float: right;
-        text-align: right;
+        text-align: left;
         border-radius: 10px;
         .message-data{
             max-inline-size: 390px;

@@ -7,7 +7,7 @@ import {BiLira, BiCommentDetail, BiGame, BiStar} from "react-icons/bi";
 import {FaRegEdit} from "react-icons/fa";
 import {CgClose} from "react-icons/cg";
 
-import styles from "../styles/ChangePasswordStyle.scss";
+import "../styles/ChangePasswordStyle.scss";
 
 import Tab from "../components/Tab";
 import FavoriteGames from "../components/FavoriteGames";
@@ -127,7 +127,7 @@ function Profile(){
                     <FcBusinessman size={200}></FcBusinessman>
                     </button>
                     <div>
-                    <h1>{id.toLocaleUpperCase()}<br></br>0.00<BiLira size={25} className="BiLira"/></h1>
+                    <h1>{id.toLocaleUpperCase().slice(0,9) + "."}<br></br>0.00<BiLira size={25} className="BiLira"/></h1>
                     <form  onClick={handleLogout}>
                         <input className='profile-logout' type='submit' value = "Logout"/>
                     </form>
