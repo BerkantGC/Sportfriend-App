@@ -12,6 +12,7 @@ import styles from "../styles/ChangePasswordStyle.scss";
 import Tab from "../components/Tab";
 import FavoriteGames from "../components/FavoriteGames";
 import AddGame from "../components/AddGame";
+import ChatRoom from "../components/ChatRoom";
 
 
 const baseUrl = "http://localhost:8080";
@@ -184,7 +185,7 @@ function Profile(){
                 selected == "addgame" && <AddGame alt="RIGHT-SIDE"/>
             }
             {
-                selected == "comments" && <div><p>Comments</p></div>
+                selected == "comments" && <ChatRoom alt="RIGHT-SIDE"/>
             }
             </div>
         </div>

@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "js-to-formdata": "^1.2.4",
+    "net": "^1.0.2",
     "object-to-formdata": "^4.4.2",
     "react": "^18.2.0",
     "react-date-picker": "^8.4.0",
@@ -18,6 +19,8 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.4.0",
     "sass": "^1.54.4",
+    "sockjs-client": "^1.6.1",
+    "stompjs": "^2.3.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

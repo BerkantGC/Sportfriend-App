@@ -11,14 +11,19 @@ const FavoriteGames =() => {
     const username = localStorage.getItem("@username");
     const [favorites, setFavorites] = useState(null);
 
+    const token = localStorage.getItem("@token");
     useEffect(()=>{
         const getFavorites = async() => {
-            await axios.get(baseUrl + "users/" + username).then(res => {setFavorites(res.data.favorites)});
+            await axios.get(baseUrl + "users/" + username, {
+                headers:{
+                    "Authorization" : `Bearer ${token}`
+                }
+            }).then(res => {setFavorites(res.data.favorites)});
         }
     
         getFavorites();
     
-    })
+    }, [])
 
     if(favorites != null)
     {
