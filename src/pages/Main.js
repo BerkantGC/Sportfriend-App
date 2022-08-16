@@ -16,7 +16,7 @@ let imageLink = baseUrl + "images/" + props.item.imageUrl;
 
   return ( 
     <div className ="game-rows-container">
-      <div onClick={()=>props.navigate(link, imageLink)} className='image-container'>
+      <div onClick={()=>props.navigate(link)} className='image-container'>
         <img className='image' loading="lazy"  src={imageLink} alt={props.item.gameName}></img>
         <p className='text'>{props.item.gameName}</p>
       </div>
