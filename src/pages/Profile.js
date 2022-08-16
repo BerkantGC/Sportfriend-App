@@ -135,15 +135,15 @@ function Profile(){
                 </div>
                 <div className="profile-edit">
                     <div className="profile-buttons">
-                    <button onClick={()=>{setSelected("favorites")}}>
+                    <button className={`${"profile-each-button"} ${selected=="favorites" && "active"}`} onClick={()=>{setSelected("favorites")}}>
                         <BiStar size={50}/>
                         <label>Favorites</label>
                     </button>
-                    <button onClick={()=>{setSelected("addgame")}}>
+                    <button className={`${"profile-each-button"} ${selected=="addgame" && "active"}`} onClick={()=>{setSelected("addgame")}}>
                         <BiGame size={50}/>
                         <label>Add Game</label>
                     </button>
-                    <button onClick={()=>{setSelected("comments")}}>
+                    <button className={`${"profile-each-button"} ${selected=="comments" && "active"}`} onClick={()=>{setSelected("comments")}}>
                         <BiCommentDetail size={50}/>
                         <label>Comments</label>
                     </button>
