@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
 import axios from "axios";
 import {FcBusinessman} from "react-icons/fc";
+import { useState, useEffect } from "react";
+import SearchInput,{ createFilter } from 'react-search-input';
 
+import "../styles/Tab.scss"
 const handleLogout = async() =>{
   localStorage.removeItem("@token")
    localStorage.removeItem("@username")
@@ -12,6 +15,31 @@ const handleGetProfileInfo = () => {
 
 }
 const Tab = ({navigate}) => {
+      const [data, setData] = useState([]);
+
+      const [isSearchBarActive, updateSearchBarActivity] = useState(false);
+      const [searchTerm,searchUpdate] = useState("");
+
+      const handleGetData = async() => 
+      {
+        await axios.get("http://localhost:8080/sellers")
+        .then(res => {
+          setData(res.data);
+          })
+      }
+      useEffect(() => {
+        handleGetData();
+      }, [])
+
+      let gamesData = [];
+      data.map(it => {
+        it.games.map(id=> {
+          gamesData.push(id)
+        })
+      })
+      const filteredList = gamesData.filter(createFilter(searchTerm, "gameName"))
+    filteredList.map(games => {console.log(games.gameName)});
+
     const token = localStorage.getItem("@token");
     const username = localStorage.getItem("@username")
     const userProfileUrl = "/profile/" + username;
@@ -38,7 +66,19 @@ const Tab = ({navigate}) => {
         </a>
         <h1 className="site-header-slogan">Türkiye'nin En Büyük Oyuncu Pazarı</h1>
       </div>
-      
+
+      <SearchInput className="search-input"  onFocus={()=>updateSearchBarActivity(true)}  onBlur={()=>updateSearchBarActivity(false)} onChange={searchUpdate}/>
+      <div className={`${"search-results-container"} ${isSearchBarActive && "active"}`}>
+      {filteredList.map(games => {
+            return(
+              <div className="bar" on onClick={()=>{let detailLink="/details/"+ games.id; navigate(detailLink)}} >
+                <div className="each-result" key={games.id}>
+                  {games.gameName}
+                </div>
+              </div>
+            )
+          })}
+      </div>
       {(token != null && username != null)? 
       <div className='profile'>
           <button onClick={() => navigate(userProfileUrl)} className='username-title'>
@@ -54,6 +94,7 @@ const Tab = ({navigate}) => {
           <input className='login-btn' type='submit' value = "Login/Register"/>
         </form>
         }
+        
     </div>
   </section>
   </div>
