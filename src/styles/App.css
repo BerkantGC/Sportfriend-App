@@ -190,6 +190,7 @@
     display: grid;
     grid-auto-flow: column;
     color: white;
+    z-index: -1;
   }
   .top-bar-text{
     color: white;

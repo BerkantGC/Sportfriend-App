@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import{useNavigate} from "react-router-dom"
 import '../styles/SellerRow.css';
 import "../styles/App.css"
-
 
 import Tab from "../components/Tab.js";
 import SellerRow from "../components/SellerRow";
@@ -44,7 +43,7 @@ function App() {
     handleGetData();
   }, [])
 
-  
+
  if(data != null)
  return(
     <div>
