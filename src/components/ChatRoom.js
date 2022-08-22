@@ -4,7 +4,6 @@ import {over} from "stompjs";
 import SockJS from "sockjs-client";
 import {FiSend} from "react-icons/fi"
 import "../styles/ChatRoom.scss";
-
 var stompClient =null;
 const ChatRoom = () => {
     const username = localStorage.getItem("@username");
@@ -36,13 +35,15 @@ const ChatRoom = () => {
 
     const sendPublicMessage=(event)=>{
         event.preventDefault();
+        const date = new Date();
         if(userData.message.length !== 0){
             if(stompClient){
                 let chatMessage ={
                 senderName: userData.username,
                 receiverName: userData.recieverName,
                 message: userData.message,
-                messageStatus: "MESSAGE"
+                messageStatus: "MESSAGE",
+                date: date.toUTCString()
                 };
                 stompClient.send('/app/message', {}, JSON.stringify(chatMessage))
                 setUserData({...userData, "message": ""})
@@ -54,7 +55,6 @@ const ChatRoom = () => {
     const onConnected=()=>{
         stompClient.subscribe("/chatroom/public", onPublicMessageRecieved);
     }
-    console.log(userData.message.length)
     function onPublicMessageRecieved(payload){
         let payloadData = JSON.parse(payload.body);
        
@@ -80,7 +80,7 @@ const ChatRoom = () => {
         }
     }*/
     const imageUrl = "http://localhost:8080/images/sad.png"
-    console.log(publicChats.length)
+    
     return(
         <div >
             <div className="chatroom"> 

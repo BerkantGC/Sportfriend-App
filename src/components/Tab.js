@@ -38,8 +38,6 @@ const Tab = ({navigate}) => {
         })
       })
       const filteredList = gamesData.filter(createFilter(searchTerm, "gameName"))
-    filteredList.map(games => {console.log(games.gameName)});
-
     const token = localStorage.getItem("@token");
     const username = localStorage.getItem("@username")
     const userProfileUrl = "/profile/" + username;
