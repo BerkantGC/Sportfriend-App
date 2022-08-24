@@ -1,20 +1,19 @@
-.chatroom-container{
-    background-color: #278EFF;
-}
+
 .chatroom-vertical-center{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    justify-content: center;
-    height: 90%;
-    width: 99%;
-    transform: translateY(-50%)
+    background-color: #171a21;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    width: auto;
+    margin-top: 1.65rem;
+    height: 800px;
+    border-radius: 15px;
+    padding: 5px;
 }
 .back-btn{
     float: right;
     position: absolute;
     right: 5px;
-    top: 5px;
+    top: 120px;
     color: white;
     padding: 5px 10px 5px 10px;
     font-size: 20px;
@@ -49,7 +48,7 @@
     }
 }
 .display-message{
-    width: 90%;
+    width: 95%;
     border: 0;
     border-radius: 5px;
     height: 30px;

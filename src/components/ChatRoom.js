@@ -7,6 +7,7 @@ import "../styles/ChatRoom.scss";
 import moment from "moment";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Tab from "./Tab";
 
 var stompClient =null;
 const baseUrl = "http://localhost:8080/"
@@ -120,7 +121,7 @@ const ChatRoom = () => {
     const imageUrl = "http://localhost:8080/images/sad.png"
     return(
         <div className="chatroom-container">
-            <button className="back-btn" onClick={()=>navigate(-1)}>Go Back</button>
+            <Tab/>
             <div className="chatroom-vertical-center">
             <div className="chatroom"> 
                 <div className="exist-messages">
