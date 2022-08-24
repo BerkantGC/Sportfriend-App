@@ -1,3 +1,5 @@
+const baseUrl = "http://localhost:3000/"
+
 const SellerRow = (props) =>{
   let sellers = [];
 
@@ -10,10 +12,11 @@ const SellerRow = (props) =>{
           <section >
             <div href="https://gamesatis.com" className="seller-row-sellers">
             {sellers.map(it => {
+              const link = baseUrl + "profile/" + it;
               return(
-                <div className="each-seller">
+                <a href={link} className="each-seller">
                 {it}
-                </div>
+                </a>
                 )
             })} 
             </div>

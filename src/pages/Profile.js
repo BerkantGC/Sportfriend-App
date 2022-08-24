@@ -13,7 +13,7 @@ import Tab from "../components/Tab";
 import FavoriteGames from "../components/FavoriteGames";
 import AddGame from "../components/AddGame";
 import ChatRoom from "../components/ChatRoom";
-
+import PrivateChatRoom from "../components/PrivateChatRoom";
 
 const baseUrl = "http://localhost:8080";
 
@@ -62,6 +62,8 @@ function Profile(){
     //define token from localstorage
     const token = localStorage.getItem("@token")
 
+    const username = localStorage.getItem("@username");
+
     //activate or deactivate the modal
     const [isPasswordModalActive, setPasswordModalActive] = useState(false);
 
@@ -70,7 +72,6 @@ function Profile(){
         const [oldPassw, setOldPass] = useState("");
         const [newPassw, setPassw] = useState("");
         const [checkPassw, setCheckPassw] = useState("");
-
         const handleSubmit = (event) => {
             //preventing refreshing of page when button clicked;
             event.preventDefault();
@@ -119,76 +120,135 @@ function Profile(){
     return(
         profileData != null &&
         <div>
-        <Tab/>
-        <div alt="LEFT-SIDE" className="profile-main-container">
-            <div className="profile-process">
-                <div className="profile-picture">
-                    <button className="icon-base" onClick={()=>setSelected("infos").style.cursor = 'pointer'}>
-                    <FcBusinessman size={200}></FcBusinessman>
-                    </button>
-                    <div>
-                    <h1>{id.length>9 ? id.toLocaleUpperCase().slice(0,9) + ".": id.toLocaleUpperCase()}<br></br>0.00<BiLira size={25} className="BiLira"/></h1>
-                    <form  onClick={handleLogout}>
-                        <input className='profile-logout' type='submit' value = "Logout"/>
-                    </form>
+            <Tab/>
+            {
+                id === username ?
+                <div alt="LEFT-SIDE" className="profile-main-container">
+                <div className="profile-process">
+                    <div className="profile-picture">
+                        <button className="icon-base" onClick={()=>setSelected("infos").style.cursor = 'pointer'}>
+                        <FcBusinessman size={200}></FcBusinessman>
+                        </button>
+                        <div>
+                        <h1>{id.length>9 ? id.toLocaleUpperCase().slice(0,9) + ".": id.toLocaleUpperCase()}<br></br>0.00<BiLira size={25} className="BiLira"/></h1>
+                        <form  onClick={handleLogout}>
+                            <input className='profile-logout' type='submit' value = "Logout"/>
+                        </form>
+                        </div>
+                    </div>
+                    <div className="profile-edit">
+                        <div className="profile-buttons">
+                        <button className={`${"profile-each-button"} ${selected=="favorites" && "active"}`} onClick={()=>{setSelected("favorites")}}>
+                            <BiStar size={50}/>
+                            <label>Favorites</label>
+                        </button>
+                        <button className={`${"profile-each-button"} ${selected=="addgame" && "active"}`} onClick={()=>{setSelected("addgame")}}>
+                            <BiGame size={50}/>
+                            <label>Add Game</label>
+                        </button>
+                        </div>
+                        <div className="profile-banner">
+                        <a href="/pubg-mobile-uc" target="_blank">
+                            <img class="user-panel-menu-bottom"  src="https://img.gamesatis.com/showcase/735/lol-hesap-64628.jpg" alt="lol"/>
+                        </a>
+                        </div>
                     </div>
                 </div>
-                <div className="profile-edit">
-                    <div className="profile-buttons">
-                    <button className={`${"profile-each-button"} ${selected=="favorites" && "active"}`} onClick={()=>{setSelected("favorites")}}>
-                        <BiStar size={50}/>
-                        <label>Favorites</label>
-                    </button>
-                    <button className={`${"profile-each-button"} ${selected=="addgame" && "active"}`} onClick={()=>{setSelected("addgame")}}>
-                        <BiGame size={50}/>
-                        <label>Add Game</label>
-                    </button>
-                    <button className={`${"profile-each-button"} ${selected=="comments" && "active"}`} onClick={()=>{setSelected("comments")}}>
-                        <BiCommentDetail size={50}/>
-                        <label>Comments</label>
-                    </button>
-                    </div>
-                    <div className="profile-banner">
-                    <a href="/pubg-mobile-uc" target="_blank">
-                        <img class="user-panel-menu-bottom"  src="https://img.gamesatis.com/showcase/735/lol-hesap-64628.jpg" alt="lol"/>
-                    </a>
-                    </div>
+                <div alt="RIGHT-SIDE" className="profile-info">
+                { 
+                    selected == "infos" && <>
+                    <div className="profile-placeholder">
+                        Email: <p>{profileData.email}</p>
+                        <div onClick={()=>setPasswordModalActive(!isPasswordModalActive)} className="edit-button">
+                                    <FaRegEdit size={30}/>
+                                </div>
+                            </div>
+                            <div className="profile-placeholder">
+                            Password: <p>{toPassword(profileData.password)}</p>
+                                <div onClick={()=>setPasswordModalActive(!isPasswordModalActive)} className="edit-button">
+                                    <FaRegEdit size={30}/>
+                                </div>
+                                <EditPassword/>
+                            </div>
+                            <div className="profile-placeholder">
+                                Roles: {Object.values(profileData.roles).map(item=>{
+                                    return <p>{item.roleName}</p>
+                                })}
+                            </div>
+                            </>
+                }
+                {
+                    selected == "favorites" && <FavoriteGames username={profileData.username} alt="RIGHT-SIDE"/>
+                }
+                {
+                    selected == "addgame" && <AddGame alt="RIGHT-SIDE"/>
+                }
+                {
+                    selected == "comments" && <ChatRoom alt="RIGHT-SIDE"/>
+                }
                 </div>
             </div>
-            <div alt="RIGHT-SIDE" className="profile-info">
-            { 
-                selected == "infos" && <>
-                <div className="profile-placeholder">
-                    Email: <p>{profileData.email}</p>
-                    <div onClick={()=>setPasswordModalActive(!isPasswordModalActive)} className="edit-button">
-                                <FaRegEdit size={30}/>
+            :
+            <div alt="LEFT-SIDE" className="profile-main-container">
+                <div className="profile-process">
+                    <div className="profile-picture">
+                        <button className="icon-base" onClick={()=>setSelected("infos").style.cursor = 'pointer'}>
+                        <FcBusinessman size={200}></FcBusinessman>
+                        </button>
+                        <div>
+                        <h1>{id.length>9 ? id.toLocaleUpperCase().slice(0,9) + ".": id.toLocaleUpperCase()}<br></br>0.00<BiLira size={25} className="BiLira"/></h1>
+                        </div>
+                    </div>
+                    <div className="profile-edit">
+                        <div className="profile-buttons">
+                        <button className={`${"profile-each-button"} ${selected=="favorites" && "active"}`} onClick={()=>{setSelected("favorites")}}>
+                            <BiStar size={50}/>
+                            <label>Favorites</label>
+                        </button>
+                        <button className={`${"profile-each-button"} ${selected=="comments" && "active"}`} onClick={()=>{setSelected("comments")}}>
+                            <BiCommentDetail size={50}/>
+                            <label>Message</label>
+                        </button>
+                        </div>
+                        <div className="profile-banner">
+                        <a href="/pubg-mobile-uc" target="_blank">
+                            <img class="user-panel-menu-bottom"  src="https://img.gamesatis.com/showcase/735/lol-hesap-64628.jpg" alt="lol"/>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div alt="RIGHT-SIDE" className="profile-info">
+                { 
+                    selected == "infos" && <>
+                    <div className="profile-placeholder">
+                        Email: <p>{profileData.email}</p>
+                        <div onClick={()=>setPasswordModalActive(!isPasswordModalActive)} className="edit-button">
+                                    <FaRegEdit size={30}/>
+                                </div>
                             </div>
-                        </div>
-                        <div className="profile-placeholder">
-                        Password: <p>{toPassword(profileData.password)}</p>
-                            <div onClick={()=>setPasswordModalActive(!isPasswordModalActive)} className="edit-button">
-                                <FaRegEdit size={30}/>
+                            <div className="profile-placeholder">
+                            Password: <p>{toPassword(profileData.password)}</p>
+                                <div onClick={()=>setPasswordModalActive(!isPasswordModalActive)} className="edit-button">
+                                    <FaRegEdit size={30}/>
+                                </div>
+                                <EditPassword/>
                             </div>
-                            <EditPassword/>
-                        </div>
-                        <div className="profile-placeholder">
-                            Roles: {Object.values(profileData.roles).map(item=>{
-                                return <p>{item.roleName}</p>
-                            })}
-                        </div>
-                        </>
-            }
-            {
-                selected == "favorites" && <FavoriteGames alt="RIGHT-SIDE"/>
-            }
-            {
-                selected == "addgame" && <AddGame alt="RIGHT-SIDE"/>
-            }
-            {
-                selected == "comments" && <ChatRoom alt="RIGHT-SIDE"/>
-            }
+                            <div className="profile-placeholder">
+                                Roles: {Object.values(profileData.roles).map(item=>{
+                                    return <p>{item.roleName}</p>
+                                })}
+                            </div>
+                            </>
+                }
+                {
+                    selected == "favorites" && <FavoriteGames username={profileData.username} alt="RIGHT-SIDE"/>
+                }
+                {
+                    selected == "comments" && <PrivateChatRoom receiverName={profileData.username} alt="RIGHT-SIDE"/>
+                }
+                </div>
             </div>
-        </div>
+            }
         </div>
     );
 }

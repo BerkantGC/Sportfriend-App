@@ -7,9 +7,9 @@ import "../styles/ChangePasswordStyle.scss"
 const baseUrl = "http://localhost:8080/";
 
 //image api 4098ffd4b6a640e78d6adf831e6f9bc0
-const FavoriteGames =() => {
+const FavoriteGames =({username}) => {
+    console.log(username)
     const navigate = useNavigate();
-    const username = localStorage.getItem("@username");
     const [favorites, setFavorites] = useState(null);
 
     const token = localStorage.getItem("@token");

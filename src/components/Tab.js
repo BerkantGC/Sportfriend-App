@@ -79,10 +79,10 @@ const Tab = ({navigate}) => {
       </div>
       {(token != null && username != null)? 
       <div className='profile'>
-          <button onClick={() => navigate(userProfileUrl)} className='username-title'>
+          <a href={userProfileUrl} className='username-title'>
           <FcBusinessman size={30}></FcBusinessman>
             <label>{username}<br></br>0,00 ₺</label>
-          </button>
+          </a>
           <form className='login' onClick={handleLogout}>
             <input className='login-btn' type='submit' value = "Logout"/>
           </form>
