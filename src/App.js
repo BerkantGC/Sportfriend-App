@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Main from "./pages/Main";
 import Details from './pages/Details';
 import Profile from './pages/Profile';
+import ChatRoom from './components/ChatRoom';
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
         <Route path='/main' element={<Main/>}/>
         <Route path='details/:id' element={<Details/>}/>
         <Route path='profile/:id' element={<Profile/>}/>
+        <Route path='/chatroom' element={<ChatRoom/>}/>
       </Routes>
     </Router>
   );

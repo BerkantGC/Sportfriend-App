@@ -294,4 +294,26 @@
       height: 0%;
     }
   }
-  
+  .absolute-popup{
+    position: sticky;
+    float: right;
+    bottom: 1px;
+    right: 25px;
+  }
+  .generalchat-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #212630;
+    margin-bottom: 10px;
+    width: 120px;
+    height: 120px;
+    border-radius: 20%;
+    -webkit-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.63);
+    -moz-box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.63);
+    box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.63);
+  }
+  .chat-modal{
+ 
+  }

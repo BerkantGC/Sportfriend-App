@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import{useNavigate} from "react-router-dom"
 import '../styles/SellerRow.css';
-import "../styles/App.css"
-
+import "../styles/App.scss"
+import { BiCommentDetail } from 'react-icons/bi';
 import Tab from "../components/Tab.js";
 import SellerRow from "../components/SellerRow";
-
+import ChatRoom from "../components/ChatRoom";
 const baseUrl = "http://localhost:8080/";
 
 const GameRows = (props) => {
@@ -24,6 +24,7 @@ let imageLink = baseUrl + "images/" + props.item.imageUrl;
 }
 
 function App() {
+  const [isChatSelected,ChatSelectedUpdate] = useState(false)
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -64,9 +65,15 @@ function App() {
                 }))}
               </div>
           </div>
-          <div><br></br></div>
+          <div className='absolute-popup'>
+                <div className='generalchat-container' onClick={()=>navigate("/chatroom")}>
+                  <BiCommentDetail style={{color: "white"}} size={50}/>
+                  <label style={{color: "white"}}>General Chat</label>
+                </div>
+          </div>
     </div>
    }
+   
    </div>
 );
 }

@@ -6,11 +6,13 @@ import {FiSend} from "react-icons/fi"
 import "../styles/ChatRoom.scss";
 import moment from "moment";
 import axios from "axios";
-var stompClient =null;
+import {useNavigate} from "react-router-dom";
 
+var stompClient =null;
 const baseUrl = "http://localhost:8080/"
 
 const ChatRoom = () => {
+    const navigate = useNavigate();
     //define token from localstorage
     const token = localStorage.getItem("@token")
     const username = localStorage.getItem("@username");
@@ -79,7 +81,7 @@ const ChatRoom = () => {
     const messageToDatabase = async(data) => {
         await axios.post(baseUrl + "message-data", {
             "senderName": username,
-            "receiverName": data.receiverName,
+            "receiverName": 'CHATROOM',
             "message": data.message,
             "date": data.date
         }, {headers: {"Authorization" : `Bearer ${token}`}})
@@ -117,11 +119,13 @@ const ChatRoom = () => {
     }*/
     const imageUrl = "http://localhost:8080/images/sad.png"
     return(
-        <div >
+        <div className="chatroom-container">
+            <button className="back-btn" onClick={()=>navigate(-1)}>Go Back</button>
+            <div className="chatroom-vertical-center">
             <div className="chatroom"> 
                 <div className="exist-messages">
                     {publicChats.map((chat,index)=> (
-                        chat.senderName ===userData.username ?
+                        chat.senderName ===username ?
                         <div className="self-message-container" key={index}>
                             <div className="avatar-self">
                                 <div className="message-data">{chat.message}</div>
@@ -137,9 +141,10 @@ const ChatRoom = () => {
             </div>
             <div className="send-message">
                 <form onSubmit={sendPublicMessage}>
-                    <input type="text" className="display-message" placeholder="You can't comment to yourself!" disabled onChange={handleMessage} value={userData.message}/>
+                    <input type="text" className="display-message" placeholder="Send Message..." onChange={handleMessage} value={userData.message}/>
                     <FiSend size={30} className="send-btn" type="submit" onClick={sendPublicMessage}/>
                 </form>
+            </div>
             </div>
         </div>
     )
