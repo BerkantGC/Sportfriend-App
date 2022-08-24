@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import axios from "axios";
 import {FcBusinessman} from "react-icons/fc";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import SearchInput,{ createFilter } from 'react-search-input';
+import {useNavigate} from "react-router-dom";
 
 import "../styles/Tab.scss"
 const handleLogout = async() =>{
@@ -14,12 +15,29 @@ const handleLogout = async() =>{
 const handleGetProfileInfo = () => {
 
 }
-const Tab = ({navigate}) => {
+const Tab = () => {
       const [data, setData] = useState([]);
-
       const [isSearchBarActive, updateSearchBarActivity] = useState(false);
       const [searchTerm,searchUpdate] = useState("");
 
+      //To detect when click outside of <div>
+      const resultRef = useRef();
+      const searchRef = useRef();
+        useEffect(() => {
+          const closeDropdown = (event) => {
+            if(resultRef.current && !resultRef.current.contains(event.target) && searchRef.current && !searchRef.current.contains(event.target))
+            {
+              updateSearchBarActivity(false)
+            }
+          };
+          document.body.addEventListener("click", closeDropdown);
+
+          return()=> document.body.removeEventListener('click', closeDropdown);
+        }, []);
+
+      
+
+      const navigate = useNavigate();
       const handleGetData = async() => 
       {
         await axios.get("http://localhost:8080/sellers")
@@ -41,6 +59,7 @@ const Tab = ({navigate}) => {
     const token = localStorage.getItem("@token");
     const username = localStorage.getItem("@username")
     const userProfileUrl = "/profile/" + username;
+
     return (
     <div>
     <div className='top-bar'>
@@ -65,11 +84,13 @@ const Tab = ({navigate}) => {
         <h1 className="site-header-slogan">Türkiye'nin En Büyük Oyuncu Pazarı</h1>
       </div>
 
-      <SearchInput className="search-input"  onFocus={()=>updateSearchBarActivity(true)}  onBlur={()=>updateSearchBarActivity(false)} onChange={searchUpdate}/>
-      <div className={`${"search-results-container"} ${isSearchBarActive && "active"}`}>
+      <div className="search-input" ref={searchRef}>
+        <SearchInput onClick={()=> updateSearchBarActivity(true)}  onChange={searchUpdate}/>
+      </div>
+      <div ref={resultRef} className={`${"search-results-container"} ${isSearchBarActive && "active"}`}>
       {filteredList.map(games => {
             return(
-              <div className="bar" on onClick={()=>{let detailLink="/details/"+ games.id; navigate(detailLink)}} >
+              <div className="bar" onClick={()=>{let detailLink="/details/"+ games.id; navigate(detailLink)}} >
                 <div className="each-result" key={games.id}>
                   {games.gameName}
                 </div>
