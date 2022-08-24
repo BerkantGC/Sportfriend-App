@@ -1,1 +1,0 @@
-# FullStackGamesSatis-Frontend
