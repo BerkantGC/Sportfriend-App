@@ -72,6 +72,8 @@ const ChatRoom = () => {
                 date: date.toUTCString()
                 };
                 messageToDatabase(chatMessage);
+                publicChats.push(chatMessage);
+                setPublicChats([...publicChats])
                 stompClient.send('/app/message', {}, JSON.stringify(chatMessage))
                 
                 setUserData({...userData, "message": ""})
@@ -118,6 +120,9 @@ const ChatRoom = () => {
             setPrivateChats(new Map(privateChats));
         }
     }*/
+    const colorArr = ['#278EFF', 'green', 'red']
+    let color = colorArr[Math.floor(Math.random()*colorArr.length)];
+
     const imageUrl = "http://localhost:8080/images/sad.png"
     return(
         <div className="chatroom-container">
@@ -134,7 +139,9 @@ const ChatRoom = () => {
                         </div>
                         :
                         <div className="message-container" key={index}>
-                            <div className="avatar">{chat.senderName}<div className="message-data">{chat.message}</div></div>
+                            {
+                            <div className="avatar" style={{color: colorArr[0]}}>{chat.senderName}<div className="message-data">{chat.message}</div></div>
+                            }
                         </div>
                     ))}
                     <div ref={messagesEndRef}></div>
