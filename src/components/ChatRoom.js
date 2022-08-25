@@ -72,8 +72,6 @@ const ChatRoom = () => {
                 date: date.toUTCString()
                 };
                 messageToDatabase(chatMessage);
-                publicChats.push(chatMessage);
-                setPublicChats([...publicChats])
                 stompClient.send('/app/message', {}, JSON.stringify(chatMessage))
                 
                 setUserData({...userData, "message": ""})

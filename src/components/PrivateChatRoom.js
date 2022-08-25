@@ -93,11 +93,11 @@ const PrivateChatRoom = ({receiverName}) => {
 
     function onPrivateMessageReceived(payload){
         let payloadData = JSON.parse(payload.body);
-        console.log("test: "+ payloadData )
         switch(payloadData.messageStatus){
             case "MESSAGE":
-                let array = [...privateChats];
-                privateChats.push(payloadData);
+                console.log("gelen: " + payloadData.senderName + "zaten: " + username)
+                if(payloadData.receiverName == username && payloadData.senderName === receiverName)
+                    privateChats.push(payloadData);
                 setPrivateChats([...privateChats])
                 break;
         }
