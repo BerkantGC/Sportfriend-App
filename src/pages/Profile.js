@@ -15,7 +15,7 @@ import AddGame from "../components/AddGame";
 import ChatRoom from "../components/ChatRoom";
 import PrivateChatRoom from "../components/PrivateChatRoom";
 
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://gamessatis-backend.herokuapp.com/";
 
 //Here is Post Action to Change Password 
 const handleChangePassword= async(oldPassw, newPassw, checkPassw)=> {
@@ -45,7 +45,7 @@ const toPassword = (password) => {
 const handleLogout = () =>{
     localStorage.removeItem("@token");
     localStorage.removeItem("@username");
-    axios.post("http://localhost:8080/logout")
+    axios.post("https://gamessatis-backend.herokuapp.com/logout")
   }
 
 

@@ -7,7 +7,7 @@ import {AiFillStar, AiOutlineStar} from "react-icons/ai";
 
 import Tab from "../components/Tab";
 
-const baseUrl = "http://localhost:8080/"
+const baseUrl = "https://gamessatis-backend.herokuapp.com/"
 
 const AddFavorite = (props) => {
     const [isFavorite, setIsFavorite] = useState(false);

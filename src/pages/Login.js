@@ -4,7 +4,7 @@ import axios from "axios"
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const baseUrl = "http://localhost:8080/"
+const baseUrl = "https://gamessatis-backend.herokuapp.com/"
 
 const Login = () => {
     const [username, setUsername] = useState("");
