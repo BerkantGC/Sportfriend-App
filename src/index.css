@@ -7,10 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 #wrapper {
-  margin-left:auto;
-  margin-right:auto;
-  width: 1900px;
-  height: 1080px;
+  margin-left:2px;
+  margin-right: 2px;
+  width: auto;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
