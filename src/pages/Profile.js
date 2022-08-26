@@ -104,7 +104,7 @@ function Profile(){
 
     //function to fetch data from api
     const handleGetProfileInfo = async(id) => {
-        await axios.get(baseUrl + "/users/" + id, {headers: {"Authorization" : `Bearer ${token}`}})
+        await axios.get(baseUrl + "users/" + id, {headers: {"Authorization" : `Bearer ${token}`}})
         .then(res => {
             setProfileData(res.data)
             console.log(res.data)
