@@ -68,20 +68,20 @@ const AddGame =() => {
         console.log(formData.getAll("file"))
         console.log(game);
 
-        await axios.post("http://localhost:8080/upload", formData).then(res=>{
+        await axios.post("https://gamessatis-backend.herokuapp.com/upload", formData).then(res=>{
             console.log(res);
         })
 
         if(hasSeller(username, sellers))
         {
-            axios.put("http://localhost:8080/sellers", game)
+            axios.put("https://gamessatis-backend.herokuapp.com/sellers", game)
             .then(res => {
                 alert("Game successfully has been added!\nInfo: "+ res.data)
             })
             .catch(err=> alert("Game adding has failed please try again\nError: " + err))
         }
         else{
-            axios.post("http://localhost:8080/sellers", game).then(res => {
+            axios.post("https://gamessatis-backend.herokuapp.com/sellers", game).then(res => {
                 alert("Game successfully has been added!\nInfo: "+ res)
             })
             .catch(err=> alert("Game adding has failed please try again\nError: " + err))

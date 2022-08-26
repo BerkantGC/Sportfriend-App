@@ -9,7 +9,7 @@ import moment from "moment";
 import axios from "axios";
 var stompClient =null;
 
-const baseUrl = "http://localhost:8080/"
+const baseUrl = "https://gamessatis-backend.herokuapp.com/"
 
 const PrivateChatRoom = ({receiverName}) => {
     //define token from localstorage
@@ -38,7 +38,7 @@ const PrivateChatRoom = ({receiverName}) => {
     }
     useEffect(()=> {
         const connect = () => {
-            let Sock = new SockJS("http://localhost:8080/ws");
+            let Sock = new SockJS("https://gamessatis-backend.herokuapp.com/ws");
             stompClient = over(Sock);
             stompClient.connect({}, onConnected, onError)
          }
@@ -115,7 +115,6 @@ const PrivateChatRoom = ({receiverName}) => {
             setPrivateChats(new Map(privateChats));
         }
     }*/
-    const imageUrl = "http://localhost:8080/images/sad.png"
     return(
         <div >
             <div className="chatroom"> 

@@ -9,7 +9,7 @@ import "../styles/Tab.scss"
 const handleLogout = async() =>{
   localStorage.removeItem("@token")
    localStorage.removeItem("@username")
-  await axios.post("http://localhost:8080/logout");
+  await axios.post("https://gamessatis-backend.herokuapp.com/logout");
 }
 
 const handleGetProfileInfo = () => {
@@ -40,7 +40,7 @@ const Tab = () => {
       const navigate = useNavigate();
       const handleGetData = async() => 
       {
-        await axios.get("http://localhost:8080/sellers")
+        await axios.get("https://gamessatis-backend.herokuapp.com/sellers")
         .then(res => {
           setData(res.data);
           })
