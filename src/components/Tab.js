@@ -109,7 +109,7 @@ const Tab = () => {
           </form>
         </div>
       :
-      <form className='login' action='http://localhost:3000/login'>
+      <form className='login' action='http://https://admin.d1tfj4asd39lfx.amplifyapp.com/login'>
           <input className='login-btn' type='submit' value = "Login/Register"/>
         </form>
         }
