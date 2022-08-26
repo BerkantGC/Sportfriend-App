@@ -1,4 +1,4 @@
-const baseUrl = "http://https://admin.d1tfj4asd39lfx.amplifyapp.com/"
+const baseUrl = "https://admin.d1tfj4asd39lfx.amplifyapp.com/"
 
 const SellerRow = (props) =>{
   let sellers = [];
