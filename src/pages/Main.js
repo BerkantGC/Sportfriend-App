@@ -7,7 +7,7 @@ import { BiCommentDetail } from 'react-icons/bi';
 import Tab from "../components/Tab.js";
 import SellerRow from "../components/SellerRow";
 import ChatRoom from "../components/ChatRoom";
-const baseUrl = "http://localhost:8080/";
+const baseUrl = "https://gamessatis-backend.herokuapp.com/";
 
 const GameRows = (props) => {
 const link = "/details/" + props.item.id;
@@ -34,7 +34,7 @@ function App() {
   { 
     setLoading(true);
     
-    await axios.get("http://localhost:8080/sellers")
+    await axios.get("https://gamessatis-backend.herokuapp.com/sellers")
     .then(res => {
       setData(res.data);
       setLoading(false);
