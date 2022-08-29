@@ -86,8 +86,7 @@ const Tab = () => {
 
       <div className="search-input" ref={searchRef}>
         <SearchInput onClick={()=> updateSearchBarActivity(true)}  onChange={searchUpdate}/>
-      </div>
-      <div ref={resultRef} className={`${"search-results-container"} ${isSearchBarActive && "active"}`}>
+        <div ref={resultRef} className={`${"search-results-container"} ${isSearchBarActive && "active"}`}>
       {filteredList.map(games => {
             return(
               <div className="bar" onClick={()=>{let detailLink="/details/"+ games.id; navigate(detailLink)}} >
@@ -98,6 +97,8 @@ const Tab = () => {
             )
           })}
       </div>
+      </div>
+      
       {(token != null && username != null)? 
       <div className='profile'>
           <a href={userProfileUrl} className='username-title'>

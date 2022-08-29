@@ -2,7 +2,7 @@
     text-align: center;
   }
   .App-header {
-    background-color: #282c34;
+    background-color: #171a21;
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -15,7 +15,9 @@
   .App-link {
     color: #61dafb;
   }
-  
+  .all-main{
+    height: 60%;
+  }
   .main{
     background-color: #171a21; 
   }
@@ -297,9 +299,9 @@
   }
   .absolute-popup{
     position: sticky;
+    bottom: 0px;
+    right: 0px;
     float: right;
-    bottom: 1px;
-    right: 25px;
   }
   .generalchat-container{
     display: flex;

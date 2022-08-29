@@ -1,5 +1,7 @@
 .search-input{
-    width: 30%;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
     &::before{
         display: block;
         position: absolute;
@@ -24,12 +26,11 @@
 }
 .search-results-container{
     position: absolute;
-    left: 39.4%;
-    top: 6.5rem;
+    margin-top: 35px;
     overflow-y: scroll;
     max-height: 20rem;
     border-color: aliceblue;
-    width: 30%;
+    width: 500px;
     justify-content: center;
     color: aliceblue;
     background-color: #212630;

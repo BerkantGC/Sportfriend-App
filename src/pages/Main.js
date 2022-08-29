@@ -47,7 +47,7 @@ function App() {
 
  if(data != null)
  return(
-    <div>
+    <div className='all-main'>
       { loading ? 
       <div className='loader-wrapper'>
                 <span className="loader"><span className="loader-inner"></span></span>
@@ -64,14 +64,14 @@ function App() {
                   return <GameRows item={item} navigate={navigate}></GameRows>
                 }))}
               </div>
-          </div>
-          <div className='absolute-popup'>
+              <div className='absolute-popup'>
                 <div className='generalchat-container' onClick={()=>navigate("/chatroom")}>
                   <BiCommentDetail style={{color: "white"}} size={50}/>
                   <label style={{color: "white"}}>General Chat</label>
                 </div>
           </div>
-    </div>
+          </div>
+      </div>
    }
    
    </div>
