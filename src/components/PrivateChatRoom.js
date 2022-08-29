@@ -32,7 +32,7 @@ const PrivateChatRoom = ({receiverName}) => {
     }
     
     const messageFromDatabase = async() => {
-        await axios.get(baseUrl + "message-data/" + receiverName, {headers: {"Authorization" : `Bearer ${token}`}})
+        await axios.get(baseUrl + "message-data/" + username, {headers: {"Authorization" : `Bearer ${token}`}})
             .then(res => {
                 console.log("fetch: " + res.data)
                 setPrivateChats(res.data)
