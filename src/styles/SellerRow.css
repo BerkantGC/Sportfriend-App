@@ -5,14 +5,14 @@
     margin-top: 0.2rem;
 }
 .seller-row-sellers{
-    display: flex;
-    flex-direction: row;
-    width: 100rem;
-    gap: 1rem;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0;
 }
 .each-seller{
-    width: 100%;
     height: 2rem;
+    margin: 0 5px 0 5px;
+    padding: 10px 20px 10px 20px;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     background-color: #212630;

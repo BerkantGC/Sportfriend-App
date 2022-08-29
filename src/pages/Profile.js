@@ -164,7 +164,7 @@ function Profile(){
                                 </div>
                             </div>
                             <div className="profile-placeholder">
-                            Password: <p>{toPassword(profileData.password)}</p>
+                            Password: <p>{toPassword(profileData.password).slice(0,12)}</p>
                                 <div onClick={()=>setPasswordModalActive(!isPasswordModalActive)} className="edit-button">
                                     <FaRegEdit size={30}/>
                                 </div>
@@ -227,7 +227,7 @@ function Profile(){
                                 </div>
                             </div>
                             <div className="profile-placeholder">
-                            Password: <p>{toPassword(profileData.password)}</p>
+                            Password: <p>{toPassword(profileData.password).slice(0,12)}</p>
                                 <div onClick={()=>setPasswordModalActive(!isPasswordModalActive)} className="edit-button">
                                     <FaRegEdit size={30}/>
                                 </div>

@@ -47,23 +47,8 @@ const SellerRow = (props) =>{
         <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
           <img alt="metin2" className="all-games-image" src="https://img.gamesatis.com/showcase/8/metin2.svg" width="70" height="45"/>
         </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img alt="pointblank" className="all-games-image" src="https://img.gamesatis.com/showcase/743/point-blank.svg" width="70" height="45"/>
-        </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img alt="wolfteam" className="all-games-image" src="https://img.gamesatis.com/showcase/731/wolfteam.svg" width="70" height="45"/>
-        </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img alt="fifa22" className="all-games-image" src="https://img.gamesatis.com/showcase/850/fifa-22.svg" width="70" height="45"/>
-        </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img alt="dota2" className="all-games-image" src="https://img.gamesatis.com/showcase/893/dota-2.svg" width="70" height="45"/>
-        </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img alt="google" className="all-games-image" src="https://img.gamesatis.com/showcase/3/google.svg" width="70" height="45"/>
-        </a> 
         <a className="all-games-container2" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img alt="rust" className="all-games-image" src="https://img.gamesatis.com/showcase/726/rust.svg" width="70" height="45"/>
+          <img alt="pointblank" className="all-games-image" src="https://img.gamesatis.com/showcase/743/point-blank.svg" width="70" height="45"/>
         </a> 
         </div>
       </div>

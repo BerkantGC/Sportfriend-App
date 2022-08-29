@@ -14,6 +14,7 @@ import Main from "./pages/Main";
 import Details from './pages/Details';
 import Profile from './pages/Profile';
 import ChatRoom from './components/ChatRoom';
+
 function App() {
   return (
     <Router>

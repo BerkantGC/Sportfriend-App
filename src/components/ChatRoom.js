@@ -37,7 +37,7 @@ const ChatRoom = () => {
     const messageFromDatabase = async() => {
         await axios.get(baseUrl + "message-data/CHATROOM", {headers: {"Authorization" : `Bearer ${token}`}})
             .then(res => setPublicChats(res.data))
-    }
+    } 
     useEffect(()=> {
         const connect = () => {
             let Sock = new SockJS("https://gamessatis-backend.herokuapp.com/ws");
@@ -71,9 +71,11 @@ const ChatRoom = () => {
                 messageStatus: "MESSAGE",
                 date: date.toUTCString()
                 };
-                messageToDatabase(chatMessage);
+                publicChats.push(chatMessage);
+                setPublicChats([...publicChats]);
                 stompClient.send('/app/message', {}, JSON.stringify(chatMessage))
-                
+                messageToDatabase(chatMessage);
+
                 setUserData({...userData, "message": ""})
             }
         }

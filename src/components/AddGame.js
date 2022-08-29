@@ -46,8 +46,10 @@ const AddGame =() => {
     const sellers = localStorage.getItem("@sellers");
 
     async function uploadFile(event){
-
         event.preventDefault();
+
+        let videoId = youtubeUrl.slice(youtubeUrl.indexOf("watch?v=") + 8, youtubeUrl.length);
+        let youtubeEmbed = "https://www.youtube.com/embed/" + videoId;
         const game = {
             "sellerName": username,
             "games": [{
@@ -59,7 +61,7 @@ const AddGame =() => {
                     "views": 0,
                     "description": description,
                     "cost": cost,
-                    "youtubeTrailer": youtubeUrl
+                    "youtubeTrailer": youtubeEmbed
                 }
             }]
         }
@@ -87,8 +89,6 @@ const AddGame =() => {
             .catch(err=> alert("Game adding has failed please try again\nError: " + err))
         }
     }
-    console.log(dateValue);
-    console.log(process)
     return(
         <form className="addgame-container" onSubmit={uploadFile}>
             <div className="info-input">
@@ -109,7 +109,7 @@ const AddGame =() => {
                     neutral80: 'white',
                 },
                 })}  options={options}/>
-                Youtube Script URL:
+                Youtube URL:
                 <input placeholder="" onChange={val=>setYoutubeUrl(val.target.value)} className="addgame-name" type="text"/>
             </div>
             

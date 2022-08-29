@@ -21,7 +21,6 @@ const PrivateChatRoom = ({receiverName}) => {
         connected: true,
         message:""
     })
-    const [publicChats, setPublicChats] = useState([])
     const [privateChats, setPrivateChats] = useState([]);
 
     const handleMessage = (event) => {
@@ -34,7 +33,7 @@ const PrivateChatRoom = ({receiverName}) => {
     
     const messageFromDatabase = async() => {
         await axios.get(baseUrl + "message-data/" + receiverName, {headers: {"Authorization" : `Bearer ${token}`}})
-            .then(res => setPublicChats(res.data))
+            .then(res => setPrivateChats(res.data))
     }
     useEffect(()=> {
         const connect = () => {
@@ -52,6 +51,15 @@ const PrivateChatRoom = ({receiverName}) => {
     if(messagesEndRef.current)
     messagesEndRef.current?.scrollIntoView()
   }
+
+  const messageToDatabase = async(data) => {
+    await axios.post(baseUrl + "message-data", {
+        "senderName": username,
+        "receiverName": receiverName,
+        "message": data.message,
+        "date": data.date
+    }, {headers: {"Authorization" : `Bearer ${token}`}})
+}
 
     useEffect(()=> {
         scrollToBottom();
@@ -71,21 +79,13 @@ const PrivateChatRoom = ({receiverName}) => {
                 };
                 privateChats.push(chatMessage);
                 setPrivateChats([...privateChats])
+                messageToDatabase(chatMessage);
                 stompClient.send('/app/private-message', {}, JSON.stringify(chatMessage))
                 
                 setUserData({...userData, "message": ""})
             }
         }
     }
-
-    /*const messageToDatabase = async(data) => {
-        await axios.post(baseUrl + "message-data", {
-            "senderName": username,
-            "receiverName": data.receiverName,
-            "message": data.message,
-            "date": data.date
-        }, {headers: {"Authorization" : `Bearer ${token}`}})
-    }*/
 
     const onConnected=()=>{
         stompClient.subscribe('/user/'+userData.username+'/private', onPrivateMessageReceived);

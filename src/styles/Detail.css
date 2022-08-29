@@ -1,17 +1,17 @@
 .detail-container{
-    margin: 5rem 15rem 0 15rem;
+    margin: 5rem 10rem 0 10rem;
+    height: 500px;
     display: grid;
-    grid-template-columns: 1fr 2fr .8fr;
-    overflow: hidden;
+    grid-template-columns: 3fr 2fr 1fr;
     gap: 1rem;
-    
 }
-
 .detail-info{
     color: white;
     background-color: #171a21;
     display: grid;
+    padding: 10px;
     grid-template-rows: 7fr 2fr;
+    overflow: scroll;
 }
 .detail-title{
     text-align: center;
@@ -20,12 +20,12 @@
 .detail-views{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
 }
 .view-container{
     background-color: #212630;
     padding: 0 10px 0 10px;
     border-radius: 5px;
+    margin: 0 5px 5px 5px;
 }
 .detail-cost{
     background-color: #171a21;
@@ -35,11 +35,12 @@
     grid-template-rows: 1fr 0.2fr;
 }
 .detail-cost2{
-    width: 100%;
     color: white;
     display: grid;
     align-items: center;
-    grid-template-columns: 1.5fr 1.5fr;
+    justify-content: center;
+    margin: 0 5px 0 5px;
+    grid-template-columns: 1fr 1fr;
 }
 .detail-description{
     font-size: medium;
@@ -51,8 +52,8 @@
 }
 .detail-image{
     object-fit: cover;
-    width: 500px;
-    height: 100%
+    width: 100%;
+    height: 500px;
 }
 .pursch-btn{
     background-color: green;

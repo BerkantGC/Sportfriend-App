@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import "../styles/Detail.css";
 import {HiCheck, HiX} from "react-icons/hi";
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
+import {BiLira} from "react-icons/bi";
+
 
 import Tab from "../components/Tab";
 
@@ -42,7 +44,7 @@ const AddFavorite = (props) => {
         }
     }
     return(
-    <div>
+    <div className="detail-cost-container">
         <h1>Store Info</h1>
         {
             isFavorite ? <AiFillStar onClick={add} size={80}/> : <AiOutlineStar onClick={add} size={80}/>
@@ -119,7 +121,7 @@ export default function Details(){
                                 }
                             </p>
                         <div >
-                            <h1>{data.cost}₺</h1>
+                            <h1>{data.cost}<BiLira size={20}/></h1>
                         </div>
                         <div>Safe</div>
                         <div>
