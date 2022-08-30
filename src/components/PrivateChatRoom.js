@@ -100,7 +100,10 @@ const PrivateChatRoom = ({receiverName}) => {
             case "MESSAGE":
                 console.log("gelen: " + payloadData.senderName + "zaten: " + username)
                 if(payloadData.receiverName == username && payloadData.senderName === receiverName)
+                {
+                    messageFromDatabase();
                     privateChats.push(payloadData);
+                }
                 setPrivateChats([...privateChats])
                 break;
         }
