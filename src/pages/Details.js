@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import "../styles/Detail.css";
 import {HiCheck, HiX} from "react-icons/hi";
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
-import {BiLira} from "react-icons/bi";
+import {BiLira, BiStar} from "react-icons/bi";
 
 
 import Tab from "../components/Tab";
 
-const baseUrl = "https://gamessatis-backend.herokuapp.com/"
+const baseUrl = "http://localhost:8080/"
 
 const AddFavorite = (props) => {
     const [isFavorite, setIsFavorite] = useState(false);
@@ -67,7 +67,7 @@ export default function Details(){
     const navigate = useNavigate();
     //Burada kaldım!
     const getDetail = async() => {
-        await axios.get(baseUrl + "game-details/" + id).then(res=>
+        await axios.get(baseUrl + "sport-details/" + id).then(res=>
             {
                 setData(res.data)
                 console.log(res.data);
@@ -121,19 +121,19 @@ export default function Details(){
                                 }
                             </p>
                         <div >
-                            <h1>{data.cost}<BiLira size={20}/></h1>
+                            <h1>{data.cost}<BiStar size={20}/></h1>
                         </div>
                         <div>Safe</div>
                         <div>
                             <button className="pursch-btn">
-                                Buy
+                                Rezervation
                             </button>
                         </div>
                     </div>
                 </div>
             </section>
             <div className="youtube-video">
-                <h1>Game Trailer</h1> 
+                <h1>Sport's Trailer</h1> 
                 <iframe width="75%" height={1430*9/16} title={data.gameName}
                 src={data.youtubeTrailer}>
                 </iframe> 

@@ -9,7 +9,7 @@ import moment from "moment";
 import axios from "axios";
 var stompClient =null;
 
-const baseUrl = "https://gamessatis-backend.herokuapp.com/"
+const baseUrl = "http://localhost:8080/"
 
 const PrivateChatRoom = ({receiverName}) => {
     //define token from localstorage
@@ -40,7 +40,7 @@ const PrivateChatRoom = ({receiverName}) => {
     }
     useEffect(()=> {
         const connect = () => {
-            let Sock = new SockJS("https://gamessatis-backend.herokuapp.com/ws");
+            let Sock = new SockJS("http://localhost:8080/ws");
             stompClient = over(Sock);
             stompClient.connect({}, onConnected, onError)
          }
