@@ -229,7 +229,7 @@
     font-size: var(--font-size-sm);
     font-size: small;
     font-weight: 100;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     margin-left: 1rem;
     white-space: nowrap;
     color: white;
@@ -299,8 +299,8 @@
   }
   .absolute-popup{
     position: sticky;
-    bottom: 0px;
-    right: 0px;
+    bottom: 50px;
+    right: 30px;
     float: right;
   }
   .generalchat-container{

@@ -4,7 +4,7 @@ import {AiFillStar} from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "../styles/Profile.css"
 import "../styles/ChangePasswordStyle.scss"
-const baseUrl = "https://gamessatis-backend.herokuapp.com/";
+const baseUrl = "http://localhost:8080/";
 
 //image api 4098ffd4b6a640e78d6adf831e6f9bc0
 const FavoriteGames =({username}) => {
@@ -44,7 +44,7 @@ const FavoriteGames =({username}) => {
     else return(
     <div className="no-favorites">
             <label>You don't have any favorite games!</label>
-            <img src="https://gamessatis-backend.herokuapp.com/images/sad.png" width={200}/>
+            <img src="http://localhost:8080/images/sad.png" width={200}/>
     </div> 
     )
 }

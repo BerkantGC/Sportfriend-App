@@ -1,4 +1,5 @@
-const baseUrl = "https://admin.d1tfj4asd39lfx.amplifyapp.com/"
+import {BiFootball, BiBasketball, BiTennisBall, BiBowlingBall, BiBall} from "react-icons/bi";
+const baseUrl = "http://localhost:8080/"
 
 const SellerRow = (props) =>{
   let sellers = [];
@@ -23,32 +24,20 @@ const SellerRow = (props) =>{
           </section>
       </div>
       <div className="all-games">
-        <a className="all-games-container1" href ="https://www.gamesatis.com/tum-oyunlar/pubg-mobile">
-          <img alt="pubg" className="all-games-image" src="https://img.gamesatis.com/showcase/5/pubg.svg" width="70" height="45"/>
+        <a className="all-games-container1" href = "https://tr.wikipedia.org/wiki/Futbol">
+          <BiFootball size={45} color="white"/>
         </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/valorant">
-          <img alt="valo" className="all-games-image"  src="https://img.gamesatis.com/showcase/310/valorant.svg" width="70" height="45"/>
+        <a className="all-games-container" href ="https://tr.wikipedia.org/wiki/Basketbol">
+          <BiBasketball size={45} color="white"/>
         </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/league-of-legends">
-          <img alt="lol" className="all-games-image" src="https://img.gamesatis.com/showcase/311/league-of-legends.svg" width="70" height="45"/>
+        <a className="all-games-container" href ="https://tr.wikipedia.org/wiki/Tenis">
+          <BiTennisBall size={45} color="white"/>
         </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/knight-online">
-          <img alt="knightonline" className="all-games-image" src="https://img.gamesatis.com/showcase/929/knight-online.svg" width="70" height="45"/>
+        <a className="all-games-container" href ="https://tr.wikipedia.org/wiki/Bowling">
+          <BiBowlingBall size={45} color="white"/>
         </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/cs-go">
-          <img alt="csgo" className="all-games-image" src="https://img.gamesatis.com/showcase/4/cs-go.svg" width="70" height="45"/>
-        </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/mobile-legends">
-          <img alt="mobilelegends" className="all-games-image" src="https://img.gamesatis.com/showcase/723/mobile-legends.svg" width="70" height="45"/>
-        </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/black-desert-online">
-          <img alt="blackdesert" className="all-games-image" src="https://img.gamesatis.com/showcase/725/black-desert-online.svg" width="70" height="45"/>
-        </a> 
-        <a className="all-games-container" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img alt="metin2" className="all-games-image" src="https://img.gamesatis.com/showcase/8/metin2.svg" width="70" height="45"/>
-        </a> 
-        <a className="all-games-container2" href ="https://www.gamesatis.com/tum-oyunlar/free-fire">
-          <img alt="pointblank" className="all-games-image" src="https://img.gamesatis.com/showcase/743/point-blank.svg" width="70" height="45"/>
+        <a className="all-games-container2" href ="https://tr.wikipedia.org/wiki/Ragbi">
+          <BiBall size={45} color="white"/>
         </a> 
         </div>
       </div>

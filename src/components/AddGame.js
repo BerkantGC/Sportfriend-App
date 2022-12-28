@@ -70,20 +70,20 @@ const AddGame =() => {
         console.log(formData.getAll("file"))
         console.log(game);
 
-        await axios.post("https://gamessatis-backend.herokuapp.com/upload", formData).then(res=>{
+        await axios.post("http://localhost:8080/upload", formData).then(res=>{
             console.log(res);
         })
 
         if(hasSeller(username, sellers))
         {
-            axios.put("https://gamessatis-backend.herokuapp.com/sellers", game)
+            axios.put("http://localhost:8080/sellers", game)
             .then(res => {
                 alert("Game successfully has been added!\nInfo: "+ res.data)
             })
             .catch(err=> alert("Game adding has failed please try again\nError: " + err))
         }
         else{
-            axios.post("https://gamessatis-backend.herokuapp.com/sellers", game).then(res => {
+            axios.post("http://localhost:8080/sellers", game).then(res => {
                 alert("Game successfully has been added!\nInfo: "+ res)
             })
             .catch(err=> alert("Game adding has failed please try again\nError: " + err))
@@ -97,7 +97,7 @@ const AddGame =() => {
                 <input  className="addgame-name" onChange={val=> setGamename(val.target.value)} placeholder="" type="text"></input>
                 Description:
                 <input  className="addgame-name" onChange={val=> setDescription(val.target.value)} placeholder="" type="text"></input>
-                Cost: 
+                Number of players: 
                 <input  className="addgame-name" onChange={val=> setCost(val.target.value)} placeholder="" type="number" min={0} ></input>
                 Year:
                 <Select placeholder="" className="select-year" onChange={(val)=>setDateValue(val.value)} theme={(theme) => ({

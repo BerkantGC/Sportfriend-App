@@ -10,7 +10,7 @@ import {useNavigate} from "react-router-dom";
 import Tab from "./Tab";
 
 var stompClient =null;
-const baseUrl = "https://gamessatis-backend.herokuapp.com/"
+const baseUrl = "http://localhost:8080/"
 
 const ChatRoom = () => {
     const navigate = useNavigate();
@@ -40,7 +40,7 @@ const ChatRoom = () => {
     } 
     useEffect(()=> {
         const connect = () => {
-            let Sock = new SockJS("https://gamessatis-backend.herokuapp.com/ws");
+            let Sock = new SockJS("http://localhost:8080/ws");
             stompClient = over(Sock);
             stompClient.connect({}, onConnected, onError)
          }

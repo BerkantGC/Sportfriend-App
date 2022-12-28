@@ -5,11 +5,13 @@ import { useState, useEffect, useRef } from "react";
 import SearchInput,{ createFilter } from 'react-search-input';
 import {useNavigate} from "react-router-dom";
 
+import logo from "../uploads/sports.png";
+
 import "../styles/Tab.scss"
 const handleLogout = async() =>{
   localStorage.removeItem("@token")
    localStorage.removeItem("@username")
-  await axios.post("https://gamessatis-backend.herokuapp.com/logout");
+  await axios.post("http://localhost:8080/logout");
 }
 
 const handleGetProfileInfo = () => {
@@ -40,7 +42,7 @@ const Tab = () => {
       const navigate = useNavigate();
       const handleGetData = async() => 
       {
-        await axios.get("https://gamessatis-backend.herokuapp.com/sellers")
+        await axios.get("http://localhost:8080/sellers")
         .then(res => {
           setData(res.data);
           })
@@ -64,8 +66,6 @@ const Tab = () => {
     <div>
     <div className='top-bar'>
       <div className="top-bar-centering">
-    <a className='top-bar-text' href='https://www.gamesatis.com/magaza-paketleri'>Mağaza Paketleri</a>
-    |
     <a className='top-bar-text' href='https://www.gamesatis.com/donate'>Donate</a>
     |
     <a className='top-bar-text' href='https://www.gamesatis.com/blog'>Blog</a>
@@ -78,10 +78,10 @@ const Tab = () => {
   <section className='site-header'>
     <div className='header-container'>
       <div className='site-header-side'>
-        <a href='/main'>
-          <img alt='logo' src='https://images.gamesatis.com/assets/logo-light.svg' width="180" height="30"/>
+        <a href='/main' style={{display: 'flex', flexDirection: 'row'}}>
+          <img alt='logo' src={logo} width="80" height="80"/>
+          <h1 className="site-header-slogan">Biggest Sport web page in Turkiye</h1>
         </a>
-        <h1 className="site-header-slogan">Türkiye'nin En Büyük Oyuncu Pazarı</h1>
       </div>
 
       <div className="search-input" ref={searchRef}>
@@ -110,7 +110,7 @@ const Tab = () => {
           </form>
         </div>
       :
-      <form className='login' action='https://admin.d1tfj4asd39lfx.amplifyapp.com/login'>
+      <form className='login' action='http://localhost:3000/login'>
           <input className='login-btn' type='submit' value = "Login/Register"/>
         </form>
         }

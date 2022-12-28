@@ -2,7 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
-const baseUrl = "https://gamessatis-backend.herokuapp.com/";
+const baseUrl = "http://localhost:8080/";
+
 const Register = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -41,7 +42,7 @@ const Register = () => {
             })
         }
             
-        await axios.post("https://gamessatis-backend.herokuapp.com/register", userToRegister)
+        await axios.post("http://localhost:8080/register", userToRegister)
         .then(res => {
             HandleLogin();
         }

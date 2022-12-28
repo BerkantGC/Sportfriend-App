@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {Navigate, useNavigate, useParams} from "react-router-dom";
 import { useSelector } from "react-redux";
 import {FcBusinessman} from "react-icons/fc";
-import {BiLira, BiCommentDetail, BiGame, BiStar} from "react-icons/bi";
+import {BiLira, BiCommentDetail, BiBall, BiStar} from "react-icons/bi";
 import {FaRegEdit} from "react-icons/fa";
 import {CgClose} from "react-icons/cg";
 
@@ -15,7 +15,7 @@ import AddGame from "../components/AddGame";
 import ChatRoom from "../components/ChatRoom";
 import PrivateChatRoom from "../components/PrivateChatRoom";
 
-const baseUrl = "https://gamessatis-backend.herokuapp.com/";
+const baseUrl = "http://localhost:8080/";
 
 //Here is Post Action to Change Password 
 const handleChangePassword= async(oldPassw, newPassw, checkPassw)=> {
@@ -45,7 +45,7 @@ const toPassword = (password) => {
 const handleLogout = () =>{
     localStorage.removeItem("@token");
     localStorage.removeItem("@username");
-    axios.post("https://gamessatis-backend.herokuapp.com/logout")
+    axios.post("logout")
   }
 
 
@@ -143,13 +143,13 @@ function Profile(){
                             <label>Favorites</label>
                         </button>
                         <button className={`${"profile-each-button"} ${selected=="addgame" && "active"}`} onClick={()=>{setSelected("addgame")}}>
-                            <BiGame size={50}/>
-                            <label>Add Game</label>
+                            <BiBall size={50}/>
+                            <label>Add Sport</label>
                         </button>
                         </div>
                         <div className="profile-banner">
                         <a href="/pubg-mobile-uc" target="_blank">
-                            <img class="user-panel-menu-bottom"  src="https://img.gamesatis.com/showcase/735/lol-hesap-64628.jpg" alt="lol"/>
+                            <img class="user-panel-menu-bottom"  src="https://cdn.ssportplus.com/35/3165/78EpV2bfM015/78EpV2bfM015.jpg" width={375} height={77} alt="lol"/>
                         </a>
                         </div>
                     </div>
